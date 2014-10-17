@@ -1,6 +1,8 @@
 
 body {
-    background-color:lightblue;
+    background-image: url("background.png");
+    background-repeat: no-repeat;
+    background-position: 50% 60px;
     }
     h1 {
 	 color: navy;
