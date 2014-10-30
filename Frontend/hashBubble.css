@@ -1,12 +1,15 @@
 
 body {
-    background-image: url("background.png");
-    background-repeat: no-repeat;
-    background-position: 50% 60px;
-    }
-    h1 {
-	 color: navy;
-	 margin-left: 21px;
-    }
+   	background-image: url("background.png");
+   	background-repeat: no-repeat;
+    	background-position: 50% 60px;   
+}
+
+.hidden{display:none;}
+
+h1 {
+	color: navy;
+	margin-left: 21px;
+ }
 
  
