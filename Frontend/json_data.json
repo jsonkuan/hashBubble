@@ -1,36 +1,29 @@
 {
 	"k1": {
-		"name": "Jason",
-		"age": "27"
+		"tweet": "This is a tweet",
+		"hashtag": "https://url.com",
+		"location": "Sweden"
+
 	},
 
 	"k2": {
-		"name": "Emily",
-		"age": "27"
+		"tweet": "This is another tweet",
+		"hashtag": "https://hashbubble.com",
+		"location": "Denmark"
+
 	},
 
 	"k3": {
-		"name": "Michael",
-		"age": "27"
+		"tweet": "This is but yet another tweet",
+		"hashtag": "https://hashbubble.com",
+		"location": "Norway"
 	},
 
 	"k4": {
-		"name": "Regine",
-		"age": "27"
-	},
-
-	"k5": {
-		"name": "Pimmie",
-		"age": "27"
-	},
-
-	"k6": {
-		"name": "Steve",
-		"age": "27"
-	},
-
-	"k7": { 
-		"name": "Nicole",
-		"age": "5"
+		"tweet": "This is the final yet tweet",
+		"hashtag": "https://hashbubble.com",
+		"location": "Finland"
+	
 	}
+
 }

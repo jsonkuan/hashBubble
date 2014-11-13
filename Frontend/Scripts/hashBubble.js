@@ -1,12 +1,17 @@
 $("button").click(function() {
-
-	$.getJSON( "json_data.json", function(obj) { 
-	$.each(obj, function(key, value) { 
-		$("ul").append("<li>"+value.name+"</li>");
-	});
-
+//http://localhost:8098/buckets/Tweets/keys/key
+	$(document).ready(function() {
+    $.getJSON("http://localhost:8098/buckets/Customers/keys/1", function(obj) { 
+	document.write(obj.name);
+        // $.each(obj, function(key, value) { 
+        // console.log(key);
+		// $("ul").append("<li>"+key.city+"</li>");
+	// });
+    });
 	});
 });
+
+// http://localhost/url/to/my-book#foo
 /*	
     $.ajax({
         type: 'POST',
