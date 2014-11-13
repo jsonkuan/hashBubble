@@ -1,7 +1,7 @@
 $("button").click(function() {
 //http://localhost:8098/buckets/Tweets/keys/key
 	$(document).ready(function() {
-    $.getJSON("http://localhost:8098/buckets/Customers/keys/1&vcallback=?", function(obj) { 
+    $.getJSON("http://localhost:8098/buckets/Customers/keys/1", function(obj) { 
 	document.write(obj.name);
         // $.each(obj, function(key, value) { 
         // console.log(key);

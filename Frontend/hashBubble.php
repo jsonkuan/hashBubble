@@ -15,23 +15,23 @@ require_once 'riak-php-client/src/Basho/Riak/MapReduce/Phase.php';
 # Starting Client
 $client = new Basho\Riak\Riak('127.0.0.1',8098);
 
-# Choose Bucket
-$tweetBucket = $client->bucket('tweets');
-
-// Fetching related data by shared key
-$fetched_tweet = $tweetBucket->get('keys')->data['text'];
-print("Tweet: \n");
-print_r($fetched_tweet);
-
-
-
 // # Choose Bucket
-// $customerBucket = $client->bucket('Customers');
+// $tweetBucket = $client->bucket('tweets');
 
 // // Fetching related data by shared key
-// $fetched_customer = $customerBucket->get('1')->data['address'];
-// print("Desired Data: \n");
-// print_r($fetched_customer);
+// $fetched_tweet = $tweetBucket->get('keys')->data['text'];
+// print("Tweet: \n");
+// print_r($fetched_tweet);
+
+
+
+# Choose Bucket
+$customerBucket = $client->bucket('Customers');
+
+// Fetching related data by shared key
+$fetched_customer = $customerBucket->get('1')->data['address'];
+print("Desired Data: \n");
+print_r($fetched_customer);
 
 
 
