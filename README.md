@@ -1,3 +1,10 @@
+
+Step 1: Clone riak-php-client into the directory 'Frontend' with the following command; 
+git clone https://github.com/basho/riak-php-client.git
+
+
+
+
 Project Idea: hashBubble
 
 The primary feature of the project is to allow a user to enter a hashtag into a web application and to display relevant thumbnail images and/or video to the user. The user will be able to apply various filters to the results, such as location and language. The results will be displayed in bubbles that the user can interact with to view the full sized image or watch the video. The results will be displayed in a steady stream of bubbles that float up the screen, giving the user limited time to pick out the images that interest them most. Users of the application will also be able to blow selected bubbles to each other.
