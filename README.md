@@ -1,5 +1,5 @@
 
-Step 1: Clone riak-php-client into the directory 'Frontend' with the following command; 
+Step 1: Clone riak-php-client into the directory 'Frontend'
 git clone https://github.com/basho/riak-php-client.git
 
 
