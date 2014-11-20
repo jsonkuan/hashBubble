@@ -15,6 +15,47 @@ require_once 'riak-php-client/src/Basho/Riak/MapReduce/Phase.php';
 # Starting Client
 $client = new Basho\Riak\Riak('127.0.0.1',8098);
 
+# Collect
+if(isset($_POST['search'])) {
+	$searchQuery = $_POST['search'];
+
+	$bookBucket = $client->bucket('books'); 
+	$fetched_data= $bookBucket->get($searchQuery)->data['body'];
+	print("$fetched_data");
+
+	}	
+		// if(empty($_POST['query'])) {
+	// 	echo "enter a hashtag";
+	// }
+
+	// $query = $_POST['query'];
+	// echo $query;
+	// $searchQuery = $_POST['search'];
+	// echo $search;
+
+
+
+// # Choose Bucket
+// $bookBucket = $client->bucket('books');
+
+// # Fetching related data by shared key
+// $fetched_data = $bookBucket->get('1111979723')->data['title'];
+// print("Selected Information: \n");
+// print_r($fetched_data);
+
+
+
+
+
+
+
+
+// header('Content-type: image/jpeg;');
+// $p = "http://i58.tinypic.com/2d9uxsi.jpg";
+// $a = file_get_contents($p);
+// echo $a;
+
+
 // # Choose Bucket
 // $tweetBucket = $client->bucket('tweets');
 
@@ -25,25 +66,13 @@ $client = new Basho\Riak\Riak('127.0.0.1',8098);
 
 
 
-# Choose Bucket
-$customerBucket = $client->bucket('Customers');
-
-// Fetching related data by shared key
-$fetched_customer = $customerBucket->get('1')->data['address'];
-print("Desired Data: \n");
-print_r($fetched_customer);
-
-
-
-
-
-
-// # Supply a key under which to store your data
-// $person = $bucket->newObject('riak_dev', array(
-//     'name' => "Jay Jackson",
-//     'age' => 72,
-//     'company' => "WhoringGalour"
+# Supply a key under which to store your data
+// $person = $bookBucket->newObject('riak_key', array(
+//     'name' => "Professor Imed",
+//     'age' => 25,
+//     'company' => "Software Engineering and Management"
 // ));
+
 // # Create some test data
 // $bucket = $client->bucket("searchbucket");
 // $bucket->newObject("one", array("foo"=>"one", "bar"=>"red"))->store();
@@ -56,13 +85,6 @@ print_r($fetched_customer);
 
 
 
-
-
-
-
-
-// # Save the object to Riak
-// $person->store();
 
 # Fetch the object
 // $person = $bucket->get('riak_dev');
