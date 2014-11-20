@@ -1,0 +1,32 @@
+@charset "utf-8";
+// our css doc
+
+	#4C0000
+.body {
+	
+	font-family: Helvetica, sans-serif
+
+}
+
+.header {
+	text-align: right;
+	color:	#47008F;
+}
+
+.nav_main {
+ 	text-align: left;
+
+}
+
+.content {
+
+	height:500px;
+	padding: 20px 20px 20px 20px;
+
+
+} 
+
+.footer {
+	text-align: left;
+	
+}
