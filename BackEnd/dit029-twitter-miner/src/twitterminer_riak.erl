@@ -1,6 +1,6 @@
 -module(twitterminer_riak).
 
--export([twitter_example/0, twitter_save_pipeline/3, get_riak_hostport/1]).
+-export([twitter_example/0, twitter_save_pipeline/3, get_riak_hostport/1,filter/1,getHashTag/1,streaming/0]).
 
 -record(hostport, {host, port}).
 
@@ -20,15 +20,14 @@ get_riak_hostport(Name) ->
 
 %% @doc This example will download a sample of tweets and print it.
 twitter_example() ->
-  URL = "https://stream.twitter.com/1.1/statuses/sample.json",
+	
+   	URL = "https://stream.twitter.com/1.1/statuses/sample.json",
 
   % We get our keys from the twitterminer.config configuration file.
   Keys = twitterminer_source:get_account_keys(account1),
 
-
   %RHP = get_riak_hostport(riak1),
-  %{ok, R} = riakc_pb_socket:start(RHP#hostport.host, RHP#hostport.port),
-   {ok, R} = riakc_pb_socket:start("127.0.0.1",8098),
+  {ok, R} = riakc_pb_socket:start("127.0.0.1",8087),
 
   % Run our pipeline
   P = twitterminer_pipeline:build_link(twitter_save_pipeline(R, URL, Keys)),
@@ -38,7 +37,7 @@ twitter_example() ->
   T = spawn_link(fun () ->
         receive
           cancel -> ok
-        after 2000 -> % Sleep fo 60 s	
+        after 30000 -> % Sleep fo 60 s
             twitterminer_pipeline:terminate(P)
         end
     end),
@@ -66,64 +65,35 @@ twitter_save_pipeline(R, URL, Keys) ->
 
 % We save only objects that have ids.
 save_tweet(R, {parsed_tweet, _L, B, {id, I}}) ->
-io:format("I is ~p~n",[I]),
-{L}=jiffy:decode(B),
-
-%io:format("Decoded is ~p~n",[L]),
-Bd=decorate(L),
-Id=fetch_key(L),
-
-case check(Id) of 
-true-> ok,
-%erlang:display(Bd);
-%Obj = riakc_obj:new(<<"tweets">>, list_to_binary(Id), Bd),
- io:format("Key is ~p~n",[Id]),
- io:format("Value is ~p~n",[Bd]),
-%riakc_pb_socket:put(R, Obj, [{w, 0}]);
-_->ok
-end;
+   % erlang:display(I),
+     %Obj = riakc_obj:new(<<"tweets">>,list_to_binary(integer_to_list(I)), B), 
+     % Obj = riakc_obj:new(<<"tweets">>,list_to_binary(integer_to_list(I)), B), 
+    % "application/json; charset=utf-8";
+filter(B);
+    %Obj = riakc_obj:new(<<"tweets">>,I, B), 
+  %riakc_pb_socket:put(R, Obj, [{w, 0}]);
 save_tweet(_, _) -> ok.
 
+filter(Object)->
+{List} = jiffy:decode(Object),
+case lists:keysearch(<<"entities">>,1,List) of 
+{value,{_,{E}}} ->
+	case lists:keysearch(<<"hashtags">>,1,E)of
+		{value, {_, Ss}} when Ss =/= [] -> Hash = getHashTag(Ss), Text = [erlang:binary_to_list(X)|| X <- Hash], 
+		case lists:keysearch(<<"media">>,1, E) of
+			{value, {_, [{Media}]}}->  case lists:keysearch(<<"media_url">>, 1, Media) of
+											{value, {_, URL}} -> URL_List = erlang:binary_to_list(URL),
+											 io:format("~w~n", [{Text,URL_List}]) end ;
+ 		_ -> io:format("It's not found ~n") end;
 
-%checks if a list is empty or not
-check(KeyList)->case KeyList of 
-[]->false;
-_->true 
-end.
-
-%%parses valuable data from the List. 
-decorate([_|T])-> 
-
-case lists:keysearch(<<"user">>,1,T)of
-{value,{_,{O}}}->
-case lists:keysearch(<<"lang">>,1,O)of
-{value,{Z,Zs}}->Q=[{Z,Zs}]
-end
-end,
-
-case  lists:keysearch(<<"retweeted_status">>,1,T) of
-{value, {_,{Ps}}}->
-case lists:keysearch(<<"favorite_count">>,1, Ps)of
-{value,{R,Rs}}->case lists:keysearch(<<"retweet_count">>,1,Ps)of
-{value,{E,Es}}->[{E,Es},{R,Rs}]++Q
-end
-end;
-_->Q
-end.
+	_ -> io:format("It's not found ~n") end  end.
 
 
-%%parse the hashtag from the given List.
-fetch_key([_|T])->case lists:keysearch(<<"entities">>,1,T)of 
-{value,{_,{E}}}->
-case lists:keysearch(<<"hashtags">>,1,E)of
-{value, {_,Ss}}->hashFormat(Ss)
-end
-end.
 
-%%cleans up the parsed hashtag so we only get the hashtags and nothing extra
-hashFormat(U)->hashFormat(U,[]).
-hashFormat([],W)->W;
-hashFormat([H|_],W)->case H of
-{[{_,R},_]}->[R]++W
-end.
+getHashTag([]) -> [];
+getHashTag([{[{_,R},_]}|T])-> [R]++getHashTag(T).
 
+
+streaming() ->
+application:ensure_all_started(twitterminer),
+twitter_example().
