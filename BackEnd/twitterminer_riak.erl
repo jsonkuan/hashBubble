@@ -26,9 +26,9 @@ twitter_example() ->
   % We get our keys from the twitterminer.config configuration file.
   Keys = twitterminer_source:get_account_keys(account1),
 
-  %RHP = get_riak_hostport(riak1),
-  {ok, R} = riakc_pb_socket:start("127.0.0.1",8098),
-
+ % RHP = get_riak_hostport(riak1),
+ % {ok, R} = riakc_pb_socket:start(RHP#hostport.host, RHP#hostport.port),
+  {ok, R} = riakc_pb_socket:start("127.0.0.1",8087),
   % Run our pipeline
   P = twitterminer_pipeline:build_link(twitter_save_pipeline(R, URL, Keys)),
 
@@ -65,16 +65,52 @@ twitter_save_pipeline(R, URL, Keys) ->
 
 % We save only objects that have ids.
 save_tweet(R, {parsed_tweet, _L, B, {id, I}}) ->
-   % erlang:display(I),
-      %Obj = riakc_obj:new(<<"tweets">>,list_to_binary(integer_to_list(I)), B), 
-      %Obj = riakc_obj:new(<<"tweets">>,integer_to_list(list_to_binary(I)), B), 
-    %"application/json; charset=utf-8",
+%save_tweet(R, {parsed_tweet, _L, MyBucket, {id, Val1}}) ->
+
+%X = filter(B),
+A = filter(B),
+io:format("~p~n", [A]),
+ case A of 
+ 	not_found -> not_found;
+ 	[{<<"hashtags">>,Hash}, {<<"media_url">>,Media_Url}, {<<"lang">>,Language}, {<<"location">>,Location}]  ->  
+ 
    
-filter(B);
+     Obj = riakc_obj:new(<<"twitter">>,
+                    Media_Url,
+                   <<"...user data...">>,
+                    <<"text/plain">>
+                    ),
+MD1 = riakc_obj:get_update_metadata(Obj),
+MD2 = riakc_obj:set_secondary_index(
+    MD1,
+    [{{binary_index, "hashtags"}, [Hash]},
+     {{binary_index, "lang"}, [Language]},
+     {{binary_index, "location"}, [Location]}]),
+Obj2 = riakc_obj:update_metadata(Obj, MD2),
+riakc_pb_socket:put(R, Obj2) end;
    
-  %riakc_pb_socket:put(R, Obj, [{w, 0}]);
+   
+  %riakc_pb_socket:put(R, Obj, [{w, 0}]) end;
 
 save_tweet(_, _) -> ok.
+
+%try_Key(Object)->
+%{List} = jiffy:decode(Object),
+%case lists:keysearch(<<"entities">>,1,List) of 
+%{value,{_,{E}}} ->
+ % case lists:keysearch(<<"hashtags">>,1,E) of
+  %  {value, {<<"hashtags">>, Ss}} when Ss =/= []-> Hash = {<<"hashtags">>, getHashTag(Ss)},
+    
+   % case lists:keysearch(<<"media">>,1, E) of
+    %  {value, {_, [{Media}]}}->  case lists:keysearch(<<"media_url">>, 1, Media) of
+     %                 {value, {_, Media_Url}} ->
+                      %io:format("~p~n", [[Hash, Media_Url, getLanguage(List), getLocation(List)]]),
+      %                Media_Url end; 
+                     
+    %_ -> io:format("It's not found ~n") end;
+
+  %_-> io:format("It's not found ~n") end  end.
+
 
 filter(Object)->
 {List} = jiffy:decode(Object),
@@ -86,12 +122,13 @@ case lists:keysearch(<<"entities">>,1,List) of
     case lists:keysearch(<<"media">>,1, E) of
       {value, {_, [{Media}]}}->  case lists:keysearch(<<"media_url">>, 1, Media) of
                       {value, Media_Url} ->
-                      io:format("~p~n", [[Hash, Media_Url, getLanguage(List), getLocation(List)]]),
+                      %io:format("~p ~p ~p ~p~n", [Hash, Media_Url, getLanguage(List), getLocation(List)]),
                       [Hash, Media_Url, getLanguage(List), getLocation(List)] end; 
+                  
         %             
-    _ -> io:format("It's not found ~n") end;
+    _ -> not_found end;
 
-  _-> io:format("It's not found ~n") end  end.
+  _-> not_found end  end.
 
 getLanguage(List) -> 
   case lists:keysearch(<<"user">>,1, List) of
