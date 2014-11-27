@@ -19,11 +19,16 @@ $client = new Basho\Riak\Riak('127.0.0.1',8098);
 if(isset($_POST['search'])) {
 	$searchQuery = $_POST['search'];
 
-	$bookBucket = $client->bucket('books'); 
-	$fetched_data= $bookBucket->get($searchQuery)->data['body'];
-	print("$fetched_data");
+	//$tweetBucket = $client->bucket('twitter'); 
+	//$fetched_data= $tweetBucket->get($searchQuery)->data['keys'];
+	//print("$fetched_data");
+
+	$shitResults = $bucket->indexSearch("hashtags_bin", $searchQuery);
+	print("$results");
 
 	}	
+
+
 		// if(empty($_POST['query'])) {
 	// 	echo "enter a hashtag";
 	// }
