@@ -2,6 +2,11 @@
 // our css doc
 
 	#4C0000
+button {
+color: blue;
+
+}
+
 .body {
 	
 	font-family: Helvetica, sans-serif
@@ -9,8 +14,9 @@
 }
 
 .header {
+	font-family: cursive;
 	text-align: right;
-	color:	#47008F;
+	color:	grey;
 }
 
 .nav_main {
