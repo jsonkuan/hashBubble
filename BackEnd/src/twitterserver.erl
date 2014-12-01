@@ -24,11 +24,12 @@ get_insta() -> gen_server:cast(insta, instagram).
 
 stop() -> gen_server:cast(tweet, stop).
 
-%%handling message from get_tweets/cast and running twitterminer example
+%%handling message from get_tweets/cast and spawning process to run twitterminer example
 handle_cast(twitter, State) ->
 	spawn(fun() -> twitterminer_riak:twitter_example() end),
 	{noreply, State};
 
+%%handling message from get_insta/cast and spawning another process to run instagram code
 handle_cast(instagram, State) ->
     spawn(fun() -> instagram:url() end),
     {noreply, State};
@@ -41,7 +42,7 @@ terminate(normal, _State) ->
 erlang:display("Process has been terminated"),
 ok.
 
-
+%%handling exit messages so server doesnt crash when message comes in
 handle_info({'EXIT', _Pid, normal}, State) ->
     {noreply, State};
 handle_info({'EXIT', Pid, Reason}, State) ->
