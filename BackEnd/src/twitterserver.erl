@@ -1,4 +1,4 @@
-%% @author Nicole Musco
+
 
 -module(twitterserver).
 -export([init/1, handle_cast/2, handle_info/2, terminate/2, code_change/3]).
@@ -16,7 +16,7 @@ start() ->
 
 init([]) ->
     erlang:display("Server Started"),
-	{ok, #state{}}.
+    {ok, #state{}}.
 
 get_tweets() -> gen_server:cast(tweet, twitter).
 
@@ -26,8 +26,8 @@ stop() -> gen_server:cast(tweet, stop).
 
 %%handling message from get_tweets/cast and spawning process to run twitterminer example
 handle_cast(twitter, State) ->
-	spawn(fun() -> twitterminer_riak:twitter_example() end),
-	{noreply, State};
+    spawn(fun() -> hash_riak:streaming() end),
+    {noreply, State};
 
 %%handling message from get_insta/cast and spawning another process to run instagram code
 handle_cast(instagram, State) ->
@@ -49,9 +49,9 @@ handle_info({'EXIT', Pid, Reason}, State) ->
     io:format("Process: ~p exited with reason: ~p~n",[Pid, Reason]),
     {noreply, State};
 handle_info(_Msg, State) ->
-	io:format("Unexpected message: ~p~n", [_Msg]),
+    io:format("Unexpected message: ~p~n", [_Msg]),
     {noreply, State}.
 
 code_change(_OldVsn, State, _Extra) ->
-	%%no change planned, function is therefor behavior and is not used
-	{ok, State}.
+    %%no change planned, function is therefor behavior and is not used
+    {ok, State}.
