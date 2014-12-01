@@ -1,6 +1,6 @@
 %% @author Nicole Musco
 
-
+%%using a supervisor to to keep the (child) server running, if stops the supervisor should restart server
 -module(twittersupervisor).
 -export([start/0, init/1]).
 -behavior(supervisor).
