@@ -12,11 +12,23 @@ start() ->
 
 %%url is the link we need to pull media from instagram then send it to the filter
 url ()-> 
+  io:format("Instagram_print~n"),
     URL = "https://api.instagram.com/v1/media/popular?access_token=1402100584.f45dfca.45b91c8f0be0487eb036f3220aeec143",
     case ibrowse:send_req(URL, [], get) of
       {ok,_,_,Body} -> 
-      filter_Inst(Body)      %io:format("~p~n", [X])
+      insta_save(Body)      
     end.
+
+insta_save(Body) ->
+
+A = filter_Inst(Body),
+ case A of 
+  not_found -> not_Instagram;
+  [{Hashtag,Hash}, {URL,Media_Url}, {Lang,Language}, {Locate,Location}]  -> 
+  Object = [{Hashtag,Hash}, {URL,Media_Url}, {Lang,Language}, {Locate,Location}],
+            {ok, R} = riakc_pb_socket:start("127.0.0.1", 10017),
+  storing:store(R, Object) end.
+
 
 %%@author Saipirun Sanprom
 %%filter recieved instagram data by decoding with Jiffy and using pattern matching to keep hashtag and url
@@ -28,10 +40,12 @@ filter_Inst(Body) ->
    case lists:keysearch(<<"data">>,1, List) of {value,{_,[{E}|_T]}} -> %io:format("~p~n",[List]),
     case lists:keysearch(<<"tags">>,1, E) of 
             {value,{_,Tag}} when Tag =/= [] -> 
-            X = {{<<"insta_hashtags">>,getTag(Tag)}, {<<"media_url">>, getURL(E)}, {<<"lang">>,<<>>}, {<<"location">>,<<>>} }
-            , io:format("~p~n", [X]);
-            _ -> not_found, io:format("not_found_insta~n" ) end;
-    _ -> not_found, io:format("not_found_insta~n" ) end.
+                [{<<"hashtags">>,getTag(Tag)}, 
+                {<<"media_url">>, getURL(E)}, 
+                {<<"lang">>,<<>>}, 
+                {<<"location">>,<<>>}];
+            _ -> not_found end;
+    _ -> not_found end.
 
 %%only take url      
 getURL(E) ->
