@@ -14,7 +14,7 @@ io:format("~p~n", [A]),
  	[{<<"hashtags">>,Hash}, {<<"media_url">>,Media_Url}, {<<"lang">>,Language}, {<<"location">>,Location}]  ->  
  
    
-     Obj = riakc_obj:new(<<"twitter_test1">>,
+     Obj = riakc_obj:new(<<"twitter">>,
                     Media_Url,
                    erlang:term_to_binary({Time, Hash}),
                     <<"text/plain">>

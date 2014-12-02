@@ -28,7 +28,7 @@ twitter_example() ->
 
  % RHP = get_riak_hostport(riak1),
  % {ok, R} = riakc_pb_socket:start(RHP#hostport.host, RHP#hostport.port),
-  {ok, R} = riakc_pb_socket:start("127.0.0.1", 8087),
+  {ok, R} = riakc_pb_socket:start("127.0.0.1", 10017),
   % Run our pipeline
   P = twitterminer_pipeline:build_link(twitter_save_pipeline(R, URL, Keys)),
 
