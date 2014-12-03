@@ -2,7 +2,7 @@
 
 %%this module handles pulling instagram data, decoding it, and filtering it to get the format we want
 -module(instagram).
--export([start/0,url/0]).
+-export([start/0,url/0,insta_streaming/0]).
 -compile(export_all).
 
 %%need these applications started in order to run instagram code
@@ -10,12 +10,15 @@ start() ->
   ibrowse:start(),
   ssl:start().
 
+insta_streaming() -> instagram_pull(0).
 
-
+ instagram_pull(100) -> instagram_is_done_20_times;
+  instagram_pull(N) ->
+    url(), instagram_pull(N+1).
 
 %%url is the link we need to pull media from instagram then send it to the filter
 url ()-> 
-  io:format("Instagram_print~n"),
+  %io:format("Instagram_print~n"),
     URL = "https://api.instagram.com/v1/media/popular?access_token=1402100584.f45dfca.45b91c8f0be0487eb036f3220aeec143",
     case ibrowse:send_req(URL, [], get) of
       {ok,_,_,Body} -> 
