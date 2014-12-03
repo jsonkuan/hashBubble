@@ -2,7 +2,7 @@
 include('setup.php');
 ?>
 
-<! DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
@@ -26,7 +26,8 @@ include('setup.php');
 	</div>
 
 	<div class="footer">
-		<p> © HashBubble Inc 2014 </p> 
+		<?php include('template/footer.php'); ?>
 	</div>
+	
 </body>
 <html>
