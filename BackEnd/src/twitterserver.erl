@@ -26,7 +26,7 @@ stop() -> gen_server:cast(tweet, stop).
 
 %%handling message from get_tweets/cast and spawning process to run twitterminer example
 handle_cast(twitter, State) ->
-    spawn(fun() -> hash_riak:streaming() end),
+    spawn(fun() -> twitter:streaming() end),
     {noreply, State};
 
 %%handling message from get_insta/cast and spawning another process to run instagram code
