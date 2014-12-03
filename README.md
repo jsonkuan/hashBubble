@@ -6,7 +6,7 @@ This is a second year project for the course DIT029 - Project: Software Architec
 
 **Current Version:** 0.1
 
-## Quickstart guide
+## Backend guide
 
 1.  Get Erlang
 
@@ -44,12 +44,12 @@ This is a second year project for the course DIT029 - Project: Software Architec
         and put them into the `twitterminer.config` file, which you find in the repo's
         toplevel directory.
         
-    1.  Follow the 5 minute riak [guide](http://docs.basho.com/riak/latest/quickstart/) and set up a 5 node cluster. Important: To allow for searching with secondary indexes the backend of the database must be changed to leveldb. Edit dev*/etc/riak.conf and change bitcask to leveldb for each node in the cluster. Nodes that are running must be restarted for this change to take effect.
+    1.  Follow the 5 minute riak [guide](http://docs.basho.com/riak/latest/quickstart/) and set up a 5 node               cluster. Important: To allow for searching with secondary indexes the backend of the database must be             changed to leveldb. Edit dev*/etc/riak.conf and change bitcask to leveldb for each node in the cluster.           Nodes that are running must be restarted for this change to take effect.
     
     1.  Edit the `twitterminer.config` file to include the host/port of the Riak node that you want to connect to.
 
 
-1.  Run the example
+1.  Run the backend
 
     Run the Erlang shell from the repo's BackEnd directory with additional library path and configuration flags
 
@@ -74,6 +74,22 @@ This is a second year project for the course DIT029 - Project: Software Architec
     ```
 
     If you get no errors, your tweets should be saved in the `<"hashtags_store">` bucket in your Riak database.
+### Frontend guide
+
+1.  The contents of the frontend folder should be moved to the appropriate location, e.g. /var/www/html/. 
+  
+1.  The project makes use of the riak php client; this should be cloned into the same folder as the index.php file.
+
+        $ git clone git://github.com/basho/riak-php-client.git
+
+1.  Ubuntu LAMP users should ensure that they have php-curl installed.
+
+        $ sudo apt-get install php5-curl
+
+1.  The Apache web server then needs to be restarted.
+
+        $ sudo service apache2 restart
+
 
 ## Dependencies
 
