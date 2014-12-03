@@ -43,7 +43,8 @@ This is a second year project for the course DIT029 - Project: Software Architec
     1.  Collect the `API key`, `API secret`, `Access token` and `Access token secret`,
         and put them into the `twitterminer.config` file, which you find in the repo's
         toplevel directory.
-    1.  Follow the 5 minute riak [guide](http://docs.basho.com/riak/latest/quickstart/) and set up a 5 node cluster.
+        
+    1.  Follow the 5 minute riak [guide](http://docs.basho.com/riak/latest/quickstart/) and set up a 5 node cluster. Important: To allow for searching with secondary indexes the backend of the database must be changed to leveldb. Edit dev*/etc/riak.conf and change bitcask to leveldb for each node in the cluster. Nodes that are running must be restarted for this change to take effect.
     
     1.  Edit the `twitterminer.config` file to include the host/port of the Riak node that you want to connect to.
 
