@@ -10,6 +10,9 @@ start() ->
   ibrowse:start(),
   ssl:start().
 
+
+
+
 %%url is the link we need to pull media from instagram then send it to the filter
 url ()-> 
   io:format("Instagram_print~n"),
@@ -18,6 +21,7 @@ url ()->
       {ok,_,_,Body} -> 
       insta_save(Body)      
     end.
+
 
 insta_save(Body) ->
 
@@ -53,8 +57,3 @@ case lists:keysearch(<<"link">>,1,E) of {value,{_,URL}} -> URL end.
 
 %%only take first hashtag in case of finding several
 getTag([H|_T]) -> H. 
-
-%pull_Ins() ->
-%application:ensure_all_started(twitterminer),
-%url().
-%stream!
