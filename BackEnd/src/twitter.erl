@@ -54,6 +54,6 @@ getHashTag([{[{_,R},_]}|_T])-> R.
 
 streaming() ->
 application:ensure_all_started(twitterminer),
-twitterminer_riak:twitter_example().
+instagram:url().
 
 

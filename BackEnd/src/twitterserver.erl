@@ -2,7 +2,7 @@
 
 -module(twitterserver).
 -export([init/1, handle_cast/2, handle_info/2, terminate/2, code_change/3]).
--export([start/0, get_tweets/0, get_insta/0, stop/0]).
+-export([start/0, get_tweets/0, stop/0]).
 - behavior(gen_server).
 
 -record(state, {}).
@@ -20,19 +20,22 @@ init([]) ->
 
 get_tweets() -> gen_server:cast(tweet, twitter).
 
-get_insta() -> gen_server:cast(insta, instagram).
+%get_insta() -> gen_server:cast(insta, instagram).
 
 stop() -> gen_server:cast(tweet, stop).
 
 %%handling message from get_tweets/cast and spawning process to run twitterminer example
 handle_cast(twitter, State) ->
-    spawn(fun() -> twitter:streaming() end),
+    spawn(fun() -> hash_riak:streaming() end),
+    spawn(fun() -> twitterminer_riak:streaming() end),
     {noreply, State};
 
 %%handling message from get_insta/cast and spawning another process to run instagram code
-handle_cast(instagram, State) ->
-    spawn(fun() -> instagram:url() end),
-    {noreply, State};
+%handle_cast(instagram, State) -> 
+%erlang:display("spawn process"),
+ %   spawn(fun() -> hash_riak:streaming() end),
+  %  erlang:display("process spawned"),
+   % {noreply, State};
 
 handle_cast(stop, State) ->
     {stop, normal, State}.
