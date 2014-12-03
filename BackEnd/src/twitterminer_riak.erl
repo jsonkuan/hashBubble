@@ -1,6 +1,6 @@
 -module(twitterminer_riak).
 
--export([twitter_example/0, twitter_save_pipeline/3, get_riak_hostport/1]).
+-export([twitter_example/0, twitter_save_pipeline/3, get_riak_hostport/1,streaming/0]).
 
 -record(hostport, {host, port}).
 
@@ -23,12 +23,13 @@ twitter_example() ->
 	
    	URL = "https://stream.twitter.com/1.1/statuses/sample.json",
 
+
   % We get our keys from the twitterminer.config configuration file.
   Keys = twitterminer_source:get_account_keys(account1),
 
  % RHP = get_riak_hostport(riak1),
  % {ok, R} = riakc_pb_socket:start(RHP#hostport.host, RHP#hostport.port),
-  {ok, R} = riakc_pb_socket:start("127.0.0.1", 10017),
+  {ok, R} = riakc_pb_socket:start("127.0.0.1", 8087),
   % Run our pipeline
   P = twitterminer_pipeline:build_link(twitter_save_pipeline(R, URL, Keys)),
 
@@ -65,10 +66,14 @@ twitter_save_pipeline(R, URL, Keys) ->
 
 % We save only objects that have ids.
 save_tweet(R, {parsed_tweet, _L, B, {id, I}}) ->
-twitter:hash_save(R, {parsed_tweet, _L, B, {id, I}}) ;
+hash_riak:hash_save(R, {parsed_tweet, _L, B, {id, I}}) ;
 
 
 save_tweet(_, _) -> ok.
+
+streaming() ->
+application:ensure_all_started(twitterminer),
+twitter_example().
 
 
 
