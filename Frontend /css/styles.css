@@ -1,33 +1,17 @@
-@charset "utf-8";
-// our css doc
-
-	#4C0000
-button {
-color: blue;
-
-}
-
-.body {
-	
-	font-family: Helvetica, sans-serif
-
-}
 
 .header {
 	font-family: cursive;
 	text-align: right;
-	color:	grey;
+	
 }
 
 .nav_main {
  	text-align: left;
-
+ 	height: 100px;
+ 	
 }
-
 .content {
-
-	height:500px;
-	padding: 20px 20px 20px 20px;
+	height:350px;
 
 
 } 
