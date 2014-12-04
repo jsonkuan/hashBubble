@@ -24,7 +24,7 @@ if(isset($_POST['search'])) {
 	foreach ($results as $link) {
 		$bubble = $link->getKey();
 		echo "<button onclick='showContent();' class='bubble'>" ."$bubble". "</button>";
-		echo '<pre>'; print_r($bubble); echo '</pre>';
+		// echo '<pre>'; print_r($bubble); echo '</pre>';
 	}
 }
 
