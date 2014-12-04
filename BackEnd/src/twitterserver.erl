@@ -34,7 +34,7 @@ handle_cast(instagram, State) ->
 erlang:display("spawn process"),
     spawn(fun() -> twitter:streaming() end),
     erlang:display("process spawned"),
-    {noreply, State};
+    {noreply, State}.
 
 handle_call(stop, _From,  State) ->
     {stop, normal, State}.
