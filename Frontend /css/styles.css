@@ -1,7 +1,6 @@
 @charset "utf-8";
 // our css doc
 
-	#4C0000
 button {
 color: blue;
 
@@ -33,6 +32,6 @@ color: blue;
 } 
 
 .footer {
-	text-align: left;
+	text-align: right;
 	
 }

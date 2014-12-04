@@ -26,7 +26,7 @@ include('setup.php');
 	</div>
 
 	<div class="footer">
-		<p> © HashBubble Inc 2014 </p> 
+		 
 	</div>
 </body>
 <html>

@@ -5,6 +5,6 @@
 ?>
 
    
-<a href="index.php?page=home">Home</a>
-<a href="index.php?page=contact">Contact</a>
-<a href="index.php?page=about">About</a>
+<a href="index.php?page=home">Clear</a>
+<a href="index.php?page=contact"></a>
+<a href="index.php?page=about"></a>
