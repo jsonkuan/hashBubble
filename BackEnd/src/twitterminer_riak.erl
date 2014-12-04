@@ -66,7 +66,7 @@ twitter_save_pipeline(R, URL, Keys) ->
 
 % We save only objects that have ids.
 save_tweet(R, {parsed_tweet, _L, B, {id, I}}) ->
-hash_riak:hash_save(R, {parsed_tweet, _L, B, {id, I}}) ;
+twitter:hash_save(R, {parsed_tweet, _L, B, {id, I}}) ;
 
 
 save_tweet(_, _) -> ok.
