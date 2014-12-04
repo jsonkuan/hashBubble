@@ -12,7 +12,7 @@ start() ->
 
 insta_streaming() -> instagram_pull(0).
 
- instagram_pull(100) -> instagram_is_done_20_times;
+ instagram_pull(3) -> instagram_is_done_20_times;
   instagram_pull(N) ->
     url(), instagram_pull(N+1).
 
@@ -22,7 +22,7 @@ url ()->
     URL = "https://api.instagram.com/v1/media/popular?access_token=1402100584.f45dfca.45b91c8f0be0487eb036f3220aeec143",
     case ibrowse:send_req(URL, [], get) of
       {ok,_,_,Body} -> 
-      insta_save(Body)      
+    insta_save(Body)      
     end.
 
 
@@ -30,7 +30,7 @@ insta_save(Body) ->
 
 A = filter_Inst(Body),
  case A of 
-  not_found -> not_Instagram;
+  not_found -> io:format("Instagram is not found Hashtag~n");
   [{Hashtag,Hash}, {URL,Media_Url}, {Lang,Language}, {Locate,Location}]  -> 
   Object = [{Hashtag,Hash}, {URL,Media_Url}, {Lang,Language}, {Locate,Location}],
             {ok, R} = riakc_pb_socket:start("127.0.0.1", 10017),
