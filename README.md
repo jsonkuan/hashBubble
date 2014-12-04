@@ -1,20 +1,113 @@
+# HashBubble
 
-Step 1: Clone riak-php-client into the directory 'Frontend'
-git clone https://github.com/basho/riak-php-client.git
+This is a second year project for the course DIT029 - Project: Software Architecture for Distributed Systems at [Gothenburg University](http://www.gu.se).
+
+**License:** This software is released into the public domain (see `LICENSE`).
+
+**Current Version:** 0.1
+
+## Backend guide
+
+1.  Get Erlang
+
+    You need an Erlang installation to run this project.
+
+1.  Get Rebar
+
+    Rebar is a build script for Erlang projects. You may install it from your distribution packages, or get it from here:
+
+    https://github.com/basho/rebar
+
+1.  Clone the repo
+
+        $ git clone https://github.com/jas0n-/hashBubble.git
+
+1.  Get the dependencies
+
+        $ cd hashBubble/
+        $ rebar get-deps
+
+1.  Compile the dependencies and the package
+
+        $ rebar compile
+
+1.  Get a Twitter account and generate authentication keys
+
+    1.  Open a Twitter account at https://twitter.com .
+
+    1.  Go to https://apps.twitter.com and create a new app.
+
+    1.  Generate API keys for the app using the API Keys tab, as described
+        [here](https://dev.twitter.com/oauth/overview/application-owner-access-tokens).
+
+    1.  Collect the `API key`, `API secret`, `Access token` and `Access token secret`,
+        and put them into the `twitterminer.config` file, which you find in the repo's
+        toplevel directory.
+        
+    1.  Follow the 5 minute riak [guide](http://docs.basho.com/riak/latest/quickstart/) and set up a 5 node               cluster. Important: To allow for searching with secondary indexes the backend of the database must be             changed to leveldb. Edit dev*/etc/riak.conf and change bitcask to leveldb for each node in the cluster.           Nodes that are running must be restarted for this change to take effect.
+    
+    1.  Edit the `twitterminer.config` file to include the host/port of the Riak node that you want to connect to.
 
 
+1.  Run the backend
+
+    Run the Erlang shell from the repo's BackEnd directory with additional library path and configuration flags
+
+        $ erl -pa deps/*/ebin -pa ebin -config twitterminer
+
+    Start all needed Erlang applications in the shell
+
+    ```erlang
+    1> application:ensure_all_started(twitterminer).
+    ```
+
+    Note that the previous step requires Erlang/OTP 16B02 or newer. If you have an older installation, you have to start them manually, as follows (see [this](http://stackoverflow.com/questions/10502783/erlang-how-to-load-applications-with-their-dependencies) for more information):
+
+    ```erlang
+    1> [application:start(A) || A <- [asn1, crypto, public_key, ssl, ibrowse, twitterminer]].
+    ```
+
+    Now you are ready to run the project.
+
+    ```erlang
+    2> twittersupervisor:start().
+    ```
+
+    If you get no errors, your tweets should be saved in the `<"hashtags_store">` bucket in your Riak database.
+### Frontend guide
+
+1.  The contents of the frontend folder should be moved to the appropriate location, e.g. /var/www/html/. 
+  
+1.  The project makes use of the riak php client; this should be cloned into the same folder as the index.php file.
+
+        $ git clone git://github.com/basho/riak-php-client.git
+
+1.  Ubuntu LAMP users should ensure that they have php-curl installed.
+
+        $ sudo apt-get install php5-curl
+
+1.  The Apache web server then needs to be restarted.
+
+        $ sudo service apache2 restart
 
 
-Project Idea: hashBubble
+## Dependencies
 
-The primary feature of the project is to allow a user to enter a hashtag into a web application and to display relevant thumbnail images and/or video to the user. The user will be able to apply various filters to the results, such as location and language. The results will be displayed in bubbles that the user can interact with to view the full sized image or watch the video. The results will be displayed in a steady stream of bubbles that float up the screen, giving the user limited time to pick out the images that interest them most. Users of the application will also be able to blow selected bubbles to each other.
+### [erlang-oauth](https://github.com/tim/erlang-oauth/)
 
-The application will initially pull images from Instagram only with the intention to expand this to include other sources once a working version of the web app exists. 
+erlang-oauth is used to construct signed request parameters required by OAuth.
 
-The project will be run using scrum methodology and will utilise the following:
-Trello - project management tool
-GitHub
-Riak
-Erlang
-Javascript, html and css
+### [ibrowse](https://github.com/cmullaparthi/ibrowse)
+
+ibrowse is an HTTP client allowing to close a connection while the request is still being serviced. We need this for cancelling Twitter streaming API requests.
+
+### [jiffy](https://github.com/davisp/jiffy)
+
+jiffy is a JSON parser, which uses efficient C code to perform the actual parsing. [mochijson2](https://github.com/bjnortier/mochijson2) is another alternative that could be used here.
+
+### [riakc](https://github.com/basho/riak-erlang-client)
+
+riak-erlang-client is the library that we use to connect to Riak over the protocol buffers interface.
+
+
 

@@ -12,7 +12,7 @@
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </head>
 
-<body>
+<body> 
 	<!-- FB Login  -->   
     <div class="fb-login-button" data-max-rows="1" data-size="small" data-show-faces="false" data-auto-logout-link="false"></div>
  
@@ -23,9 +23,8 @@
 	</form>
 	
 	<!-- Bubbles  -->
-	<!-- <button onclick="showContent();" class="bubble" id="b2">This one Works</button> -->
 	<?php include('hashBubble.php');?>
-	
+
 
   <!-- Pass URL from PHP to JS and display as image -->
   <script>
@@ -48,7 +47,6 @@
     
 	</script>  
 
-
 	<!-- Randomize Bubble Location on Screen -->
 	<script type="text/javascript">
 	$(document).ready(function(){
@@ -70,13 +68,6 @@
 });
 	</script>
 
-
-	
-<!-- 	 $('#b1').click(function() {
-  			var img = $('<img />', {src : 'http://pbs.twimg.com/media/B3W_5bBIQAA8ep-.jpg'});
-  			img.('#b1');
-   			appendTo(body)???
-		 }); -->
 
  </body>
  </html> 

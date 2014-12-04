@@ -1,5 +1,4 @@
    .bubble {
-    position: absolute;
     display:block;
     width:100px;
     height:100px;
@@ -9,48 +8,32 @@
     color:#black;
     text-align:;
     text-decoration:none;
-    background: #FFCCFF   ;
-    box-shadow: 0 0 3px #CC00FF;
+    background: #FF69B4   ;
+    box-shadow: 0 0 3px blue;
     font-size:8px;
     font-weight:bold;
    } 
 
    #b1 {
-    position: absolute;
+    position: fixed;
     top: 60%;
     left: 40%;
    }
 
-<<<<<<< HEAD
-   .fb-login-button {
-   position: fixed;
-   top: 1%;
-   left: 95%;
-=======
    #b2{
     position: fixed;
     top: 20%;
     left: 60%;
    }
 
-    #b3{
+     #b3{
     position: fixed;
     top: 5%;
     left: 20%;
    }
 
->>>>>>> 0079db14254d77c27c08389a3a183ec4ba087857
 
-    }
 
-<<<<<<< HEAD
-    #fuckinCentered {
-    position: fixed;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    }
 
         /*-------------------------------------*/
         
@@ -173,5 +156,3 @@
             }
             
 
-=======
->>>>>>> 0079db14254d77c27c08389a3a183ec4ba087857
