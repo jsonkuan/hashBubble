@@ -20,7 +20,7 @@ init([]) ->
 
 get_tweets() -> gen_server:cast(tweet, twitter).
 
-%get_insta() -> gen_server:cast(insta, instagram).
+get_insta() -> gen_server:cast(tweet, instagram).
 
 stop() -> gen_server:cast(tweet, stop).
 
@@ -31,16 +31,16 @@ handle_cast(twitter, State) ->
     {noreply, State};
 
 %%handling message from get_insta/cast and spawning another process to run instagram code
-%handle_cast(instagram, State) -> 
-%erlang:display("spawn process"),
- %   spawn(fun() -> hash_riak:streaming() end),
-  %  erlang:display("process spawned"),
-   % {noreply, State};
+handle_cast(instagram, State) -> 
+erlang:display("spawn process"),
+    spawn(fun() -> hash_riak:streaming() end),
+    erlang:display("process spawned"),
+    {noreply, State};
 
 handle_cast(stop, State) ->
     {stop, normal, State}.
 
-
+%must be here to override, will crash if not implemented, dont argue.
 terminate(normal, _State) ->
 erlang:display("Process has been terminated"),
 ok.
