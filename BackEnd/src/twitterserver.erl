@@ -32,7 +32,7 @@ handle_cast(twitter, State) ->
 %%handling message from get_insta/cast and spawning another process to run instagram code
 handle_cast(instagram, State) -> 
 erlang:display("spawn process"),
-    spawn(fun() -> hash_riak:streaming() end),
+    spawn(fun() -> twitter:streaming() end),
     erlang:display("process spawned"),
     {noreply, State};
 
