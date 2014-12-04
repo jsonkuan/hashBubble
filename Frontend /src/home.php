@@ -5,7 +5,9 @@
 <html lang ="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/homeStyling.css"> 
+    <link rel="stylesheet" href="css/bubbles.css"> 
+    <link rel="stylesheet" href="css/searchBarStyle.css"> 
+    <link rel="stylesheet" href="css/styles.css"> 
     
     <!-- JQuery Source -->
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -13,8 +15,6 @@
 </head>
 
 <body> 
-	<!-- FB Login  -->   
-    <div class="fb-login-button" data-max-rows="1" data-size="small" data-show-faces="false" data-auto-logout-link="false"></div>
  
  	<!-- Search bar -->
 	<form class="form-wrapper cf" name="searchform" action="" method="post" id="fuckinCentered">
