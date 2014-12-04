@@ -23,7 +23,7 @@
 	</form>
 	
 	<!-- Bubbles  -->
-	<?php include('hashBubble.php');?>
+	<?php include('riakQuery.php');?>
 
 
   <!-- Pass URL from PHP to JS and display as image -->
