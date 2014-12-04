@@ -1,6 +1,5 @@
 <?php
 include('src/setup.php');
-
 ?>
 
 <!DOCTYPE HTML>
