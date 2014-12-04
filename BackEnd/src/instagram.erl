@@ -22,6 +22,7 @@ url ()->
     URL = "https://api.instagram.com/v1/media/popular?access_token=1402100584.f45dfca.45b91c8f0be0487eb036f3220aeec143",
     case ibrowse:send_req(URL, [], get) of
       {ok,_,_,Body} -> 
+     % jiffy:decode(Body)
     insta_save(Body)      
     end.
 
@@ -47,10 +48,13 @@ filter_Inst(Body) ->
    case lists:keysearch(<<"data">>,1, List) of {value,{_,[{E}|_T]}} -> %io:format("~p~n",[List]),
     case lists:keysearch(<<"tags">>,1, E) of 
             {value,{_,Tag}} when Tag =/= [] -> 
+            case lists:keysearch(<<"type">>,1, E) of
+              {value,{_, <<"image">>}} ->
                 [{<<"hashtags">>,getTag(Tag)}, 
                 {<<"media_url">>, getURL(E)}, 
                 {<<"lang">>,<<>>}, 
                 {<<"location">>,<<>>}];
+              _ -> not_found end;
             _ -> not_found end;
     _ -> not_found end.
 
