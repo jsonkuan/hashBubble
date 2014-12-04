@@ -2,7 +2,7 @@
 
 
 -module(schedule).
--export([start/0, stop/0]).
+-export([start/0]).
 
 
 %%schedule used for restarting twitter feed every minute and 
@@ -33,6 +33,3 @@ start({_Date, _Time}) ->
 	CurrentTime = erlang:localtime(),
 	timer:sleep(1000),
 	start(CurrentTime).
-%%to stop schedule if we want	
-stop() -> 
-	{ok, stopped_schedule}.
