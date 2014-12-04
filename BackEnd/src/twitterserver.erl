@@ -1,7 +1,7 @@
 
 
 -module(twitterserver).
--export([init/1, handle_cast/2, handle_info/2, terminate/2, code_change/3]).
+-export([init/1, handle_cast/2, handle_call/2, handle_info/2, terminate/2, code_change/3]).
 -export([start/0, get_tweets/0, get_insta/0, stop/0]).
 -behavior(gen_server).
 
@@ -36,8 +36,7 @@ erlang:display("spawn process"),
     erlang:display("process spawned"),
     {noreply, State};
 
-handle_call(stop, State) ->
-    exit(normal),
+handle_call(stop, _From,  State) ->
     {stop, normal, State}.
 
 %must be here to override, will crash if not implemented, dont argue.
