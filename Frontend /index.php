@@ -26,7 +26,11 @@ include('setup.php');
 	</div>
 
 	<div class="footer">
+<<<<<<< HEAD
+		 
+=======
 		<?php include('template/footer.php'); ?>
+>>>>>>> 0079db14254d77c27c08389a3a183ec4ba087857
 	</div>
 	
 </body>
