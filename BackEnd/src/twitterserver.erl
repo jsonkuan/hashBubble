@@ -22,7 +22,7 @@ get_tweets() -> gen_server:cast(tweet, twitter).
 
 get_insta() -> gen_server:cast(tweet, instagram).
 
-stop() -> gen_server:cast(tweet, stop).
+stop() -> gen_server:call(tweet, stop).
 
 %%handling message from get_tweets/cast and spawning process to run twitterminer example
 handle_cast(twitter, State) ->
@@ -36,7 +36,8 @@ erlang:display("spawn process"),
     erlang:display("process spawned"),
     {noreply, State};
 
-handle_cast(stop, State) ->
+handle_call(stop, State) ->
+    exit(normal),
     {stop, normal, State}.
 
 %must be here to override, will crash if not implemented, dont argue.
