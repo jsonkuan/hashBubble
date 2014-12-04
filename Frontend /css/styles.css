@@ -1,38 +1,23 @@
-<<<<<<< HEAD
+
 @charset "utf-8";
 // our css doc
 
-button {
-color: blue;
-
-}
-
-.body {
-	
-	font-family: Helvetica, sans-serif
-
-}
-=======
->>>>>>> 0079db14254d77c27c08389a3a183ec4ba087857
 
 .header {
+	height: 50px;
 	font-family: cursive;
 	text-align: right;
-	
+	background-color: white;
 }
 
-.nav_main {
- 	text-align: left;
- 	height: 100px;
- 	
-}
 .content {
-	height:350px;
-
-
+	height:690px;
+	background-color: white;
 } 
 
 .footer {
+	height: 50px;
 	text-align: right;
+	background-color: white;
 	
 }

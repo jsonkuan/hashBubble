@@ -1,5 +1,6 @@
 <?php
-include('setup.php');
+include('src/setup.php');
+
 ?>
 
 <!DOCTYPE HTML>
@@ -16,21 +17,13 @@ include('setup.php');
 	<div class="header">
 		<?php include('template/header.php'); ?>
 	</div>
-	
-	<div class="nav_main">
-		<?php include('template/nav_main.php'); ?>
-	</div>
-
 	<div class="content ">
-		<?php include('content/'.$page.'.php'); ?>
+		<?php include('src/'.$page.'.php'); ?>
 	</div>
 
 	<div class="footer">
-<<<<<<< HEAD
-		 
-=======
 		<?php include('template/footer.php'); ?>
->>>>>>> 0079db14254d77c27c08389a3a183ec4ba087857
+
 	</div>
 	
 </body>
