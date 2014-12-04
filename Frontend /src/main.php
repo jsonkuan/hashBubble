@@ -1,9 +1,10 @@
 
-
+ <?php include('riakQuery.php');?>
 
 <!DOCTYPE html> 
 <html lang ="en">
 <head>
+    <!-- Link CSS Sheets -->
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bubbles.css"> 
     <link rel="stylesheet" href="css/searchBarStyle.css"> 
@@ -14,20 +15,16 @@
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </head>
 
+
 <body> 
- 
  	<!-- Search bar -->
 	<form class="form-wrapper cf" name="searchform" action="" method="post" id="fuckinCentered">
 		<input type="text" name="search" placeholder="Enter a #hashtag">
 		<button type="submit" value="Search">Find#</button>
 	</form>
 	
-	<!-- Bubbles  -->
-	<?php include('riakQuery.php');?>
-
-
-  <!-- Pass URL from PHP to JS and display as image -->
-  <script>
+    <!-- Pass URL from PHP to JS and display as image -->
+<script type="text/javascript">
 
   var bubbleUrl = <?php echo json_encode($bubble); ?>;
 
@@ -44,18 +41,18 @@
         img.alt = alt;
         document.body.appendChild(img);
     }
-    
-	</script>  
+</script>  
 
-	<!-- Randomize Bubble Location on Screen -->
-	<script type="text/javascript">
+
+    <!-- Randomize Bubble Location on Screen -->
+<script type="text/javascript">
 	$(document).ready(function(){
 		var bubbleLocation="<div class='bubble'></div>";
     	var numBubbles=0;
     	for(var x=1;x<=numBubbles;x++){
         	$(bubbleLocation).appendTo("body");
     	}
-    // get window dimentions
+        // Get Window Dimentions
     	var ww = $(window).width();
     	var wh = $(window).height();
     	$(".bubble").each(function(i){
@@ -64,11 +61,11 @@
         	var posx = Math.round(Math.random() * ww)-20;
         	var posy = Math.round(Math.random() * wh)-20;
         $(this).css("top", posy + "px").css("left", posx + "px").css("transform",rotation).css("-ms-transform",rotation).css("-webkit-transform",rotation);
+         });
     });
-});
-	</script>
+</script>
 
 
- </body>
- </html> 
+</body>
+</html> 
  
