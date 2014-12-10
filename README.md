@@ -24,7 +24,7 @@ This is a second year project for the course DIT029 - Project: Software Architec
 
 1.  Get the dependencies
 
-        $ cd hashBubble/
+        $ cd hashBubble/Backend
         $ rebar get-deps
 
 1.  Compile the dependencies and the package
