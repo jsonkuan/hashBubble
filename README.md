@@ -55,17 +55,6 @@ This is a second year project for the course DIT029 - Project: Software Architec
 
         $ erl -pa deps/*/ebin -pa ebin -config twitterminer
 
-    Start all needed Erlang applications in the shell
-
-    ```erlang
-    1> application:ensure_all_started(twitterminer).
-    ```
-
-    Note that the previous step requires Erlang/OTP 16B02 or newer. If you have an older installation, you have to start them manually, as follows (see [this](http://stackoverflow.com/questions/10502783/erlang-how-to-load-applications-with-their-dependencies) for more information):
-
-    ```erlang
-    1> [application:start(A) || A <- [asn1, crypto, public_key, ssl, ibrowse, twitterminer]].
-    ```
 
     Now you are ready to run the project.
 
