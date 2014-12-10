@@ -32,9 +32,8 @@
 
 
 <body> 
-<<<<<<< HEAD
-    
 
+    
 	<!-- Bubbles  -->
 	<?php include('riakQuery.php');?>
 
