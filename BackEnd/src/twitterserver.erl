@@ -26,14 +26,12 @@ stop() -> gen_server:call(tweet, stop).
 
 %%handling message from get_tweets/cast and spawning process to run twitterminer example
 handle_cast(twitter, State) ->
-    spawn(fun() -> twitterminer_riak:streaming() end),
+    spawn(fun() -> streaming:twitter_streaming() end),
     {noreply, State};
 
 %%handling message from get_insta/cast and spawning another process to run instagram code
 handle_cast(instagram, State) -> 
-erlang:display("spawn process"),
-    spawn(fun() -> twitter:streaming() end),
-    erlang:display("process spawned"),
+    spawn(fun() -> streaming:instagram_streaming() end),
     {noreply, State}.
 
 handle_call(stop, _From,  State) ->
