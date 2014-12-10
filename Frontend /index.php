@@ -15,8 +15,8 @@ include('src/setup.php');
 	
 	<div class="header">
 		<?php include('template/header.php'); ?>
-	</div>
-	<div class="content ">
+	</div> 
+	<div class="content">
 		<?php include('src/'.$page.'.php'); ?>
 	</div>
 
