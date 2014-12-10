@@ -8,6 +8,7 @@
 -behavior(supervisor).
 
 start() -> supervisor:start_link({local, ?MODULE}, ?MODULE, []),
+	application:ensure_all_started(twitterminer),
 			schedule:start(), twitterserver:start().
 init([]) ->
 RestartStrategy = one_for_one,
