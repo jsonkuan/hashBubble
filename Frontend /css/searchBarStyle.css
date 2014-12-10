@@ -1,6 +1,6 @@
     
 
-    #fuckinCentered {
+    #searchtext {
     position: fixed;
     top: 25%;
     left: 50%;
@@ -99,6 +99,8 @@
               
             .form-wrapper button:hover{
             background: #e54040;
+            border: solid 1px #e54040;
+            text-decoration: none;
     }
                           
             .form-wrapper button:active,

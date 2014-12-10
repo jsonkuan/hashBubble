@@ -1,27 +1,36 @@
 
 
-
 <!DOCTYPE html> 
 <html lang ="en">
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bubbles.css"> 
-    <link rel="stylesheet" href="css/searchBarStyle.css"> 
     <link rel="stylesheet" href="css/styles.css"> 
+ 
     
+  <!-- Search bar -->
+    <form class="form-wrapper cf" name="searchform" id="searchtext" action="src/second.php" method='get'>
+        <input type="text" name="search" placeholder="Enter a #hashtag">
+        <button type="submit" value="Search">Find#</button >
+    </form>
+
+
+    <!--JavaScript for button
+
+    <script type="text/javascript">
+    document.getElementById("searchtext").onclick = function () {
+        location.href = "http://www.google.se";
+    };
+    </script>  -->
+
     <!-- JQuery Source -->
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </head>
 
 <body> 
- 
- 	<!-- Search bar -->
-	<form class="form-wrapper cf" name="searchform" action="" method="post" id="fuckinCentered">
-		<input type="text" name="search" placeholder="Enter a #hashtag">
-		<button type="submit" value="Search">Find#</button>
-	</form>
-	
+    
+
 	<!-- Bubbles  -->
 	<?php include('riakQuery.php');?>
 

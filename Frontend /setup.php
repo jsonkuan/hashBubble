@@ -3,11 +3,11 @@
 
 if (!isset($_GET['page'])) {
 
-	$page = 'home';
+	$page = 'main';
 	
 } else {
 
-	$page = $_GET['page'];
+	$page = $_GET['search'];
 }
 
 ?>
