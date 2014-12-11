@@ -1,8 +1,5 @@
 
-<<<<<<< HEAD
-=======
  <?php include('riakQuery.php');?>
->>>>>>> 70551c76cd1036cea81fdaf02fb5db8480b4b0f2
 
 <!DOCTYPE html> 
 <html lang ="en">
@@ -35,9 +32,8 @@
 
 
 <body> 
-<<<<<<< HEAD
-    
 
+    
 	<!-- Bubbles  -->
 	<?php include('riakQuery.php');?>
 
