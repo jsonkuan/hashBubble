@@ -40,7 +40,7 @@
 
   <!-- Pass URL from PHP to JS and display as image -->
   <script>
-=======
+
  	<!-- Search bar -->
 	<form class="form-wrapper cf" name="searchform" action="" method="post" id="fuckinCentered">
 		<input type="text" name="search" placeholder="Enter a #hashtag">
@@ -49,7 +49,7 @@
 	
     <!-- Pass URL from PHP to JS and display as image -->
 <script type="text/javascript">
->>>>>>> 70551c76cd1036cea81fdaf02fb5db8480b4b0f2
+
 
   var bubbleUrl = <?php echo json_encode($bubble); ?>;
 
