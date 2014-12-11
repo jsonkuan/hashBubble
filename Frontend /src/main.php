@@ -9,19 +9,15 @@
     <link rel="stylesheet" href="css/bubbles.css"> 
     <link rel="stylesheet" href="css/styles.css"> 
  
-<<<<<<< HEAD
-    
- 
-=======
+
       <!-- JQuery Source -->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
->>>>>>> 5e8cfd029b4525752ef76d74ff41422e2092c927
+
 </head>
 
 
 <body> 
-<<<<<<< HEAD
 
  <!-- Search bar -->
     <form class="form-wrapper cf" name="searchform" id="searchtext" action="src/second.php" method='get'>
@@ -43,7 +39,7 @@
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
     
-=======
+
  	<!-- Search bar -->
 	<form class="form-wrapper cf" name="searchform" action="" method="post" id="fuckinCentered">
 		<input type="text" name="search" placeholder="Enter a #hashtag">
@@ -51,7 +47,7 @@
 	</form>
 	
         <!-- Pass json encoded URL from riakQuery.php to JS showContent function and displays as an image-->  
->>>>>>> 5e8cfd029b4525752ef76d74ff41422e2092c927
+
 <script type="text/javascript">
   var bubbleUrl = <?php echo json_encode($bubble); ?>;
     function showContent() {
