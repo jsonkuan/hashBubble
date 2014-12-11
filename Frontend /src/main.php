@@ -30,38 +30,15 @@
     };
     </script>  -->
 
-<<<<<<< HEAD
-     <!-- Pass json encoded URL from riakQuery.php to JS showContent function and displays as an image-->  
-<script type="text/javascript">
-  
-=======
-    <!-- JQuery Source -->
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-</head>
-
-
 <body> 
-
-    
-	<!-- Bubbles  -->
-	<?php include('riakQuery.php');?>
-
-
-  <!-- Pass URL from PHP to JS and display as image -->
-  <script>
-
  	<!-- Search bar -->
 	<form class="form-wrapper cf" name="searchform" action="" method="post" id="fuckinCentered">
 		<input type="text" name="search" placeholder="Enter a #hashtag">
 		<button type="submit" value="Search">Find#</button>
 	</form>
 	
-    <!-- Pass URL from PHP to JS and display as image -->
+        <!-- Pass json encoded URL from riakQuery.php to JS showContent function and displays as an image-->  
 <script type="text/javascript">
-
-
->>>>>>> 20720b1940413314aa906e7aaf9dec41a11dd5ed
   var bubbleUrl = <?php echo json_encode($bubble); ?>;
     function showContent() {
         var src = bubbleUrl;
