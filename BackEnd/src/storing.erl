@@ -21,7 +21,7 @@ store([{_Hashtag,Hash}, {_URL,Media_Url}, {_Lang,Language}, {_Locate,Location}])
 %Time = erlang:term_to_binary(calendar:local_time()),
 T = calendar:local_time(),
 Time = list_to_binary(map_reduce:format_date(T)),
- Obj = riakc_obj:new(<<"hashtags_store">>,
+ Obj = riakc_obj:new(<<"image_data">>,
                     Media_Url,
                    erlang:term_to_binary({Time, Hash}),
                     <<"text/plain">>
