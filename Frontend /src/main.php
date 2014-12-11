@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="css/bubbles.css"> 
     <link rel="stylesheet" href="css/styles.css"> 
  
-    
+      <!-- JQuery Source -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+</head>
+
+<body> 
   <!-- Search bar -->
     <form class="form-wrapper cf" name="searchform" id="searchtext" action="src/second.php" method='get'>
         <input type="text" name="search" placeholder="Enter a #hashtag">
@@ -25,34 +30,10 @@
     };
     </script>  -->
 
-    <!-- JQuery Source -->
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-</head>
-
-
-<body> 
-
-    
-	<!-- Bubbles  -->
-	<?php include('riakQuery.php');?>
-
-
-  <!-- Pass URL from PHP to JS and display as image -->
-  <script>
-=======
- 	<!-- Search bar -->
-	<form class="form-wrapper cf" name="searchform" action="" method="post" id="fuckinCentered">
-		<input type="text" name="search" placeholder="Enter a #hashtag">
-		<button type="submit" value="Search">Find#</button>
-	</form>
-	
-    <!-- Pass URL from PHP to JS and display as image -->
+     <!-- Pass json encoded URL from riakQuery.php to JS showContent function and displays as an image-->  
 <script type="text/javascript">
->>>>>>> 70551c76cd1036cea81fdaf02fb5db8480b4b0f2
-
+  
   var bubbleUrl = <?php echo json_encode($bubble); ?>;
-
     function showContent() {
         var src = bubbleUrl;
         show_image(bubbleUrl, 250,200, "Image: Lost in translation");
@@ -72,7 +53,7 @@
     <!-- Randomize Bubble Location on Screen -->
 <script type="text/javascript">
 	$(document).ready(function(){
-		var bubbleLocation="<div class='bubble'></div>";
+		var bubbleLocation="<div onlclick='showContent();' class='bubble'></div>";
     	var numBubbles=0;
     	for(var x=1;x<=numBubbles;x++){
         	$(bubbleLocation).appendTo("body");
