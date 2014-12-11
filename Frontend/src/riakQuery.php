@@ -10,7 +10,7 @@ require_once '../riak-php-client/src/Basho/Riak/Utils.php';
 
 
 # Starting Client
-$client = new Basho\Riak\Riak('127.0.0.1',10017);
+$client = new Basho\Riak\Riak('127.0.0.1',10018);
 
 # Choose bucket
 $tweetBucket = $client->bucket("image_data");
