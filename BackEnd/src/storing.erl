@@ -18,8 +18,10 @@ get_riak_hostport(Name) ->
 store([{_Hashtag,Hash}, {_URL,Media_Url}, {_Lang,Language}, {_Locate,Location}]) ->
  RHP = get_riak_hostport(riak1),
  {ok, R} = riakc_pb_socket:start(RHP#hostport.host, RHP#hostport.port),
-Time = erlang:term_to_binary(calendar:local_time()),
- Obj = riakc_obj:new(<<"hashtags_store">>,
+%Time = erlang:term_to_binary(calendar:local_time()),
+T = calendar:local_time(),
+Time = list_to_binary(map_reduce:format_date(T)),
+ Obj = riakc_obj:new(<<"image_data">>,
                     Media_Url,
                    erlang:term_to_binary({Time, Hash}),
                     <<"text/plain">>
@@ -29,9 +31,10 @@ MD2 = riakc_obj:set_secondary_index(
     MD1,
     [{{binary_index, "hashtags"}, [Hash]},
      {{binary_index, "lang"}, [Language]},
-     {{binary_index, "location"}, [Location]}]),
+     {{binary_index, "location"}, [Location]},
+     {{binary_index, "time"}, [Time]}]),
 Obj2 = riakc_obj:update_metadata(Obj, MD2),
     riakc_pb_socket:put(R, Obj2),
     Object =[{Hash}, {Media_Url}],
-    io:format("~p~n", [Object]), 
+    io:format("~p~n", [Object]), io:format("~p~n", [Time]), 
     riakc_pb_socket:stop(R).
