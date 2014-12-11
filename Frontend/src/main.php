@@ -6,8 +6,8 @@
 <head>
     <!-- Link CSS Sheets -->
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/bubbles.css"> 
-    <link rel="stylesheet" href="css/styles.css"> 
+    <link rel="stylesheet" href="../css/bubbles.css"> 
+    <link rel="stylesheet" href="../css/styles.css"> 
  
     
  
@@ -17,7 +17,7 @@
 <body> 
 
  <!-- Search bar -->
-    <form class="form-wrapper cf" name="searchform" id="searchtext" action="src/second.php" method='get'>
+    <form class="form-wrapper cf" name="searchform" id="searchtext" action="./second.php" method='get'>
         <input type="text" name="search" placeholder="Enter a #hashtag">
         <button type="submit" value="Search">Find#</button >
     </form>

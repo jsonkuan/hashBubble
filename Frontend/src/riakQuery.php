@@ -1,12 +1,12 @@
 <?php
 
-require_once 'riak-php-client/src/Basho/Riak/Riak.php';
-require_once 'riak-php-client/src/Basho/Riak/Bucket.php';
-require_once 'riak-php-client/src/Basho/Riak/Exception.php';
-require_once 'riak-php-client/src/Basho/Riak/Link.php';
-require_once 'riak-php-client/src/Basho/Riak/Object.php';
-require_once 'riak-php-client/src/Basho/Riak/StringIO.php';
-require_once 'riak-php-client/src/Basho/Riak/Utils.php';
+require_once '../riak-php-client/src/Basho/Riak/Riak.php';
+require_once '../riak-php-client/src/Basho/Riak/Bucket.php';
+require_once '../riak-php-client/src/Basho/Riak/Exception.php';
+require_once '../riak-php-client/src/Basho/Riak/Link.php';
+require_once '../riak-php-client/src/Basho/Riak/Object.php';
+require_once '../riak-php-client/src/Basho/Riak/StringIO.php';
+require_once '../riak-php-client/src/Basho/Riak/Utils.php';
 
 
 # Starting Client

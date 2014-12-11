@@ -14,7 +14,7 @@
 	  <style>
 	    html.no-svg .svg-image { display: none }
 	  </style>
-	  <a href="src/main.php">
+	  <a href="./main.php">
 	    <img class="svg-image" src="../home.svg" height="55" width="55">
 	  </a>
 
@@ -23,7 +23,7 @@
     
   <!-- Search bar -->
   <div id="searchtext_2">							<!-- action method here?? --> 
-    <form class="form-wrapper cf" name="searchform" action="" method="post" id="searchtext_2">
+    <form class="form-wrapper cf" name="searchform" action="" method='get' id="searchtext_2">
         <input type="text" name="search" placeholder="Enter a #hashtag">
         <button type="submit" value="Search">Find#</button >
     </form>
