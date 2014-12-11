@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="css/styles.css"> 
  
     
-  <!-- Search bar -->
+ 
+</head>
+
+
+<body> 
+
+ <!-- Search bar -->
     <form class="form-wrapper cf" name="searchform" id="searchtext" action="src/second.php" method='get'>
         <input type="text" name="search" placeholder="Enter a #hashtag">
         <button type="submit" value="Search">Find#</button >
@@ -26,28 +32,10 @@
     </script>  -->
 
     <!-- JQuery Source -->
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-</head>
-
-
-<body> 
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
     
-	<!-- Bubbles  -->
-	<?php include('riakQuery.php');?>
-
-
-  <!-- Pass URL from PHP to JS and display as image -->
-  <script>
-
- 	<!-- Search bar -->
-	<form class="form-wrapper cf" name="searchform" action="" method="post" id="fuckinCentered">
-		<input type="text" name="search" placeholder="Enter a #hashtag">
-		<button type="submit" value="Search">Find#</button>
-	</form>
-	
-    <!-- Pass URL from PHP to JS and display as image -->
 <script type="text/javascript">
 
 
