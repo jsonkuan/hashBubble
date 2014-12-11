@@ -22,9 +22,8 @@ if(isset($_POST['search'])) {
 
 	$results = $tweetBucket->indexSearch("hashtags", 'bin', $searchQuery);
 	foreach ($results as $link) {
-		$url = $link->getKey();
-		$bubble = "<button onclick='showContent();' class='bubble'>" ."$url". "</button>";
-		echo $bubble;
+		$bubble = $link->getKey();
+		echo "<button onclick='showContent();' class='bubble'>" ."$bubble". "</button>";
 		// echo '<pre>'; print_r($bubble); echo '</pre>';
 	}
 }

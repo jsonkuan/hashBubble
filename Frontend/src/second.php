@@ -14,7 +14,7 @@
 	  <style>
 	    html.no-svg .svg-image { display: none }
 	  </style>
-	  <a href="http://hashbubble.ddns.net/">
+	  <a href="src/main.php">
 	    <img class="svg-image" src="../home.svg" height="55" width="55">
 	  </a>
 
