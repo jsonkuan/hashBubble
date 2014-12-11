@@ -13,7 +13,7 @@ require_once 'riak-php-client/src/Basho/Riak/Utils.php';
 $client = new Basho\Riak\Riak('127.0.0.1',10017);
 
 # Choose bucket
-$tweetBucket = $client->bucket("twitter");
+$tweetBucket = $client->bucket("image_data");
 
 # Search for exact match from secondary index 
 if(isset($_POST['search'])) {
