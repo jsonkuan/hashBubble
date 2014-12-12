@@ -8,9 +8,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/bubbles.css"> 
     <link rel="stylesheet" href="../css/styles.css"> 
- 
-    
- 
+     <!-- JQuery Source -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </head>
 
 
@@ -22,22 +22,8 @@
         <button type="submit" value="Search">Find#</button >
     </form>
 
-
-    <!--JavaScript for button
-
-    <script type="text/javascript">
-    document.getElementById("searchtext").onclick = function () {
-        location.href = "http://www.google.se";
-    };
-    </script>  -->
-
-    <!-- JQuery Source -->
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
     
 <script type="text/javascript">
-
 
   var bubbleUrl = <?php echo json_encode($bubble); ?>;
 
@@ -60,7 +46,7 @@
     <!-- Randomize Bubble Location on Screen -->
 <script type="text/javascript">
 	$(document).ready(function(){
-		var bubbleLocation="<div class='bubble'></div>";
+		var bubbleLocation="<div></div>";
     	var numBubbles=0;
     	for(var x=1;x<=numBubbles;x++){
         	$(bubbleLocation).appendTo("body");

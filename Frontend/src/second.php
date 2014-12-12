@@ -38,9 +38,9 @@
 <script type="text/javascript">
 
 
-  var bubbleUrl = <?php echo json_encode($bubble); ?>;
+  var bubbleUrl = <?php echo json_encode($url); ?>;
 
-    function showContent() {
+    function showContent(bubbleUrl) {
         var src = bubbleUrl;
         show_image(bubbleUrl, 250,200, "Image: Lost in translation");
     }
