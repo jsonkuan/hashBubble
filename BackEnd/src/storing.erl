@@ -1,5 +1,5 @@
 -module(storing).
-- export([store/1]).
+- export([store/1,store_map/1, to_binary/2]).
 
 -record(hostport, {host, port}).
 
@@ -38,3 +38,27 @@ Obj2 = riakc_obj:update_metadata(Obj, MD2),
     Object =[{Hash}, {Media_Url}],
     io:format("~p~n", [Object]), io:format("~p~n", [Time]), 
     riakc_pb_socket:stop(R).
+
+
+    
+store_map(Map_Result)  ->
+
+% RHP = get_riak_hostport(riak1),
+ {ok, R} = riakc_pb_socket:start_link("127.0.0.1", 10017), %riakc_pb_socket:start(RHP#hostport.host, RHP#hostport.port),
+%Time = erlang:term_to_binary(calendar:local_time()),
+T = calendar:local_time(),
+Time = list_to_binary(map_reduce:format_date(T)),
+case Map_Result of
+  Map_Result ->
+        
+        Obj = riakc_obj:new(<<"top_hashtags">>,
+                    Time,
+                   erlang:list_to_binary(to_binary(Map_Result,[])),
+                    <<"text/plain">>
+                    ),
+         riakc_pb_socket:put(R, Obj) end,
+    io:format("~p~n", [Map_Result]), 
+    riakc_pb_socket:stop(R).
+
+    to_binary([], Obj_binary) -> Obj_binary;
+    to_binary([M|T],Obj_binary) -> to_binary(T, Obj_binary++[erlang:term_to_binary(M)]).
