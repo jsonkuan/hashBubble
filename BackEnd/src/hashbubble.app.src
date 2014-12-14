@@ -1,4 +1,4 @@
-{application, twitterminer,
+{application, hashbubble,
  [
   {description, ""},
   {vsn, "0.1"},
@@ -9,6 +9,6 @@
                   ibrowse,
                   ssl
                  ]},
-  %{mod, { twitterminer_app, []}},
+  %{mod, { hashbubble_app, []}},
   {env, []}
  ]}.

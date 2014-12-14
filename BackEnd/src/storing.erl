@@ -9,7 +9,7 @@ keyfind(Key, L) ->
 
 %% @doc Get Twitter account keys from a configuration file.
 get_riak_hostport(Name) ->
-  {ok, Nodes} = application:get_env(twitterminer, riak_nodes),
+  {ok, Nodes} = application:get_env(hashbubble, riak_nodes),
   {Name, Keys} = lists:keyfind(Name, 1, Nodes),
   #hostport{host=keyfind(host, Keys),
             port=keyfind(port, Keys)}.

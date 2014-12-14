@@ -12,19 +12,19 @@ start() ->
 
 
 start({_Date, {11,54,30}}) ->
-	twitterserver:get_top_20(),
+	hb_server:get_top_20(),
 	timer:sleep(3*60*1000),
 	start(erlang:localtime());
 
 %%every new minute, get tweets then sleep for a second, start over
 start({_Date, {_, _, 00}}) ->
-	twitterserver:get_tweets(),
+	hb_server:get_tweets(),
 	timer:sleep(1000),
 	start(erlang:localtime());
 
 %%every 5 seconds, get instagram data then sleep for a second, start over
 start({_Date, {_,_, S}}) when S rem 5 =:= 0 ->
-	twitterserver:get_insta(),
+	hb_server:get_insta(),
 	timer:sleep(1000),
 	start(erlang:localtime());
 

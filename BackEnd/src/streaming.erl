@@ -16,7 +16,7 @@ instagram_streaming() -> instagram_pull(0).
     url(), instagram_pull(N+1).
 
 get_instagram_key(Name) ->
-  {ok, Nodes} = application:get_env(twitterminer, instagram),
+  {ok, Nodes} = application:get_env(hashbubble, instagram),
   {Name, Key} = lists:keyfind(Name, 1, Nodes),
  #insta_key{access_token=keyfind(access_token, Key)}.
 
