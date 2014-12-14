@@ -2,7 +2,7 @@
 
 -module(twitterserver).
 -export([init/1, handle_cast/2, handle_call/3, handle_info/2, terminate/2, code_change/3]).
--export([start/0, get_tweets/0, get_insta/0, stop/0]).
+-export([start/0, get_tweets/0, get_insta/0, stop/0, get_top_20/0]).
 -behavior(gen_server).
 
 -record(state, {}).
@@ -18,11 +18,17 @@ init([]) ->
     erlang:display("Server Started"),
     {ok, #state{}}.
 
+get_top_20() -> gen_server:cast(tweet, mapreduce).
+
 get_tweets() -> gen_server:cast(tweet, twitter).
 
 get_insta() -> gen_server:cast(tweet, instagram).
 
 stop() -> gen_server:call(tweet, stop).
+
+handle_cast(mapreduce, State) ->
+    spawn(fun() -> map_reduce:start() end),
+    {noreply, State};
 
 %%handling message from get_tweets/cast and spawning process to run twitterminer example
 handle_cast(twitter, State) ->

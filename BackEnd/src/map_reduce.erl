@@ -1,12 +1,12 @@
 -module(map_reduce).
 -export([mapHash/3, reduceHash/2, mapred/2, get_link/0,
 		close_link/1, get_bucket_keys/1, start_date/0,
-		end_date/0, format_date/1, reverse/2,test/1]).
+		end_date/0, format_date/1, reverse/2, start/0]).
 
 
-test(Bucket) ->
+start() ->
 	Pid = get_link(),
-	BucketKey = get_bucket_keys(Bucket),
+	BucketKey = get_bucket_keys(<<"image_data">>),
 	mapred(BucketKey,Pid).
 
 % it connect to Riak and return a pid
