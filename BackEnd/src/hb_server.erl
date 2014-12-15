@@ -26,6 +26,7 @@ get_insta() -> gen_server:cast(tweet, instagram).
 
 stop() -> gen_server:call(tweet, stop).
 
+%%handling message from get_tweets/cast and spawning process to run map reduce and get 20 top hashtags
 handle_cast(mapreduce, State) ->
     spawn(fun() -> map_reduce:start() end),
     {noreply, State};

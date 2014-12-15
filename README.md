@@ -10,7 +10,7 @@ This is a second year project for the course DIT029 - Project: Software Architec
 
 1.  Get Erlang
 
-    You need an Erlang installation to run this project. The compatible version of Erlang can be found here:
+    You need an Erlang installation to run this project. Version 17 of Erlang does not work with Riak. The compatible version of Erlang can be found here:
     
     http://docs.basho.com/riak/latest/ops/building/installing/erlang/
 
@@ -46,7 +46,7 @@ This is a second year project for the course DIT029 - Project: Software Architec
         and put them into the `hashbubble.config` file, which you find in the repo's
         toplevel directory.
         
-    1.  Follow the 5 minute riak [guide](http://docs.basho.com/riak/latest/quickstart/) and set up a 5 node               cluster. Important: To allow for searching with secondary indexes the backend of the database must be             changed to leveldb. Edit dev*/etc/riak.conf and change bitcask to leveldb for each node in the cluster.           Nodes that are running must be restarted for this change to take effect.
+    1.  Follow the 5 minute riak [guide](http://docs.basho.com/riak/latest/quickstart/) and set up a 5 node                   cluster. Important: To allow for searching with secondary indexes the backend of the database must be                 changed to leveldb. Edit dev*/etc/riak.conf and change bitcask to leveldb for each node in the cluster.               Nodes that are running must be restarted for this change to take effect.
     
     1.  Edit the `hashbubble.config` file to include the host/port of the Riak node that you want to connect to.
 
@@ -61,7 +61,7 @@ This is a second year project for the course DIT029 - Project: Software Architec
     Now you are ready to run the project.
 
     ```erlang
-    2> twittersupervisor:start().
+    2> hb_supervisor:start().
     ```
 
     If you get no errors, your tweets should be saved in the `<"image_data">` bucket in your Riak database.
@@ -80,7 +80,11 @@ This is a second year project for the course DIT029 - Project: Software Architec
 1.  The Apache web server then needs to be restarted.
 
         $ sudo service apache2 restart
+### Mapreduce guide
 
+1.  In order to run the mapreduce functions the advanced.config file needs to be placed in the same folder as             riak.conf, e.g. dev/dev*/etc/advanced.config. The file needs to be edited so that the path points to the location     of the map_reduce.beam file, e.g ~/hashbubble/Backend/ebin/. 
+    Important: each node must be restarted when changes are made to the map_reduce.erl file or the advanced.config        file. 
+        $ bin/riak-admin erl-reload
 
 ## Dependencies
 
