@@ -1,5 +1,5 @@
 <?php
-include('src/setup.php');
+include('setup.php');
 ?>
 
 <!DOCTYPE HTML>
@@ -17,7 +17,7 @@ include('src/setup.php');
 		<?php include('template/header.php'); ?>
 	</div> 
 	<div class="content">
-		<?php include('src/'.$page.'.php'); ?>
+		<?php include($page.'.php'); ?>
 	</div>
 
 	<div class="footer">
