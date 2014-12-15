@@ -50,6 +50,8 @@ This is a second year project for the course DIT029 - Project: Software Architec
     
     1.  Edit the `hashbubble.config` file to include the host/port of the Riak node that you want to connect to.
 
+1.  Get an Instagram account and generate an access token. Vist http://instagram.com/developer/# for more information.
+    1.  Add the access token to the hashbubble.config file and save it.
 
 1.  Run the backend
 
