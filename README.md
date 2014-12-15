@@ -10,7 +10,9 @@ This is a second year project for the course DIT029 - Project: Software Architec
 
 1.  Get Erlang
 
-    You need an Erlang installation to run this project.
+    You need an Erlang installation to run this project. The compatible version of Erlang can be found here:
+    
+    http://docs.basho.com/riak/latest/ops/building/installing/erlang/
 
 1.  Get Rebar
 
@@ -41,19 +43,19 @@ This is a second year project for the course DIT029 - Project: Software Architec
         [here](https://dev.twitter.com/oauth/overview/application-owner-access-tokens).
 
     1.  Collect the `API key`, `API secret`, `Access token` and `Access token secret`,
-        and put them into the `twitterminer.config` file, which you find in the repo's
+        and put them into the `hashbubble.config` file, which you find in the repo's
         toplevel directory.
         
     1.  Follow the 5 minute riak [guide](http://docs.basho.com/riak/latest/quickstart/) and set up a 5 node               cluster. Important: To allow for searching with secondary indexes the backend of the database must be             changed to leveldb. Edit dev*/etc/riak.conf and change bitcask to leveldb for each node in the cluster.           Nodes that are running must be restarted for this change to take effect.
     
-    1.  Edit the `twitterminer.config` file to include the host/port of the Riak node that you want to connect to.
+    1.  Edit the `hashbubble.config` file to include the host/port of the Riak node that you want to connect to.
 
 
 1.  Run the backend
 
     Run the Erlang shell from the repo's BackEnd directory with additional library path and configuration flags
 
-        $ erl -pa deps/*/ebin -pa ebin -config twitterminer
+        $ erl -pa deps/*/ebin -pa ebin -config hashbubble
 
 
     Now you are ready to run the project.
@@ -62,7 +64,7 @@ This is a second year project for the course DIT029 - Project: Software Architec
     2> twittersupervisor:start().
     ```
 
-    If you get no errors, your tweets should be saved in the `<"hashtags_store">` bucket in your Riak database.
+    If you get no errors, your tweets should be saved in the `<"image_data">` bucket in your Riak database.
 ### Frontend guide
 
 1.  The contents of the frontend folder should be moved to the appropriate location, e.g. /var/www/html/. 
