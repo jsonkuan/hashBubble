@@ -53,6 +53,13 @@ This is a second year project for the course DIT029 - Project: Software Architec
 1.  Get an Instagram account and generate an access token. Vist http://instagram.com/developer/# for more information.
     1.  Add the access token to the hashbubble.config file and save it.
 
+### Mapreduce guide
+
+1.  In order to run the mapreduce functions the advanced.config file needs to be placed in the same folder as             riak.conf, e.g. dev/dev*/etc/advanced.config. The file needs to be edited so that the path points to the location     of the map_reduce.beam file, e.g ~/hashbubble/Backend/ebin/. 
+    Important: each node must be restarted when changes are made to the map_reduce.erl file or the advanced.config        file.
+
+        $ bin/riak-admin erl-reload
+
 1.  Run the backend
 
     Run the Erlang shell from the repo's BackEnd directory with additional library path and configuration flags
@@ -82,11 +89,7 @@ This is a second year project for the course DIT029 - Project: Software Architec
 1.  The Apache web server then needs to be restarted.
 
         $ sudo service apache2 restart
-### Mapreduce guide
 
-1.  In order to run the mapreduce functions the advanced.config file needs to be placed in the same folder as             riak.conf, e.g. dev/dev*/etc/advanced.config. The file needs to be edited so that the path points to the location     of the map_reduce.beam file, e.g ~/hashbubble/Backend/ebin/. 
-    Important: each node must be restarted when changes are made to the map_reduce.erl file or the advanced.config        file. 
-        $ bin/riak-admin erl-reload
 
 ## Dependencies
 
