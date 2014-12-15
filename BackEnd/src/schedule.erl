@@ -10,7 +10,8 @@
 start() -> 
 	start(erlang:localtime()).
 
-
+%%every day at this time, using map reduce to get 20 most popular hashtags, 
+%%sleeps, starts local time again
 start({_Date, {11,54,30}}) ->
 	hb_server:get_top_20(),
 	timer:sleep(3*60*1000),
