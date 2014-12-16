@@ -1,5 +1,5 @@
 -module(storing).
-- export([store/1,store_map/1, to_binary/2]).
+- export([store/2,store_map/1, to_binary/2]).
 
 -record(hostport, {host, port}).
 
@@ -15,13 +15,13 @@ get_riak_hostport(Name) ->
             port=keyfind(port, Keys)}.
 
 
-store([{_Hashtag,Hash}, {_URL,Media_Url}, {_Lang,Language}, {_Locate,Location}]) ->
+store(Bucket,[{_Hashtag,Hash}, {_URL,Media_Url}, {_Lang,Language}, {_Locate,Location}]) ->
  RHP = get_riak_hostport(riak1),
  {ok, R} = riakc_pb_socket:start(RHP#hostport.host, RHP#hostport.port),
 %Time = erlang:term_to_binary(calendar:local_time()),
 T = calendar:local_time(),
 Time = list_to_binary(map_reduce:format_date(T)),
- Obj = riakc_obj:new(<<"image_data">>,
+ Obj = riakc_obj:new(Bucket,
                     Media_Url,
                    erlang:term_to_binary({Time, Hash}),
                     <<"text/plain">>

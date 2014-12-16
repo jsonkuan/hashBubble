@@ -12,7 +12,7 @@ A = filter(B),
  	[{<<"hashtags">>,Hash}, {<<"media_url">>,Media_Url}, {<<"lang">>,Language}, {<<"location">>,Location}]  -> 
   Object = [{<<"hashtags">>,Hash}, {<<"media_url">>,Media_Url}, 
             {<<"lang">>,Language}, {<<"location">>,Location}],
-  storing:store(Object) end;
+  storing:store(<<"twitter_data">>, Object) end;
   filter_twitter(_) -> ok.
 
 
@@ -58,7 +58,7 @@ A = filter_Inst(Body),
  not_found -> ok;
   [{Hashtag,Hash}, {URL,Media_Url}, {Lang,Language}, {Locate,Location}]  -> 
   Object = [{Hashtag,Hash}, {URL,Media_Url}, {Lang,Language}, {Locate,Location}],
-  storing:store(Object) end.
+  storing:store(<<"instagram_data">>, Object) end.
 
 
 %%@author Saipirun Sanprom
