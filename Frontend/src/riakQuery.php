@@ -24,7 +24,7 @@ if(isset($_POST['search'])) {
 	foreach ($results as $link) {
 		$url = $link->getKey();
 		$i = $i + 1;
-		$bubble = "<button onclick='showContent(this.name, this.id);' name='$url' class='bubble' id='bub" .$i. "'></button>";
+		$bubble = "<button onclick='showContent(this.name, this.id);' name='$url' class='bubble' id='b" .$i. "'></button>";
 		echo $bubble;
 	}
 }
