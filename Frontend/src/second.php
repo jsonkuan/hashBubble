@@ -49,40 +49,6 @@
     }
 </script>  
 
-    <!-- Fade out bubbles when clicked -->
-<script type"text/javascript">
-$(document).ready(function(){
-  $("#b1").click(function(){
-    $("#b1").fadeOut(5000);
-  });
-});
-$(document).ready(function(){
-  $("#b2").click(function(){
-    $("#b2").fadeOut(5000);
-
-  });
-});
-$(document).ready(function(){
-  $("#b3").click(function(){
-    $("#b3").fadeOut(5000);
-
-  });
-});
-$(document).ready(function(){
-  $("#b4").click(function(){
-    $("#b4").fadeOut(5000);
-
-  });
-});
-$(document).ready(function(){
-  $("#b5").click(function(){
-    $("#b5").fadeOut(5000);
-
-  });
-});
-</script>
-
-
     <!-- Randomize Bubble Location on Screen -->
 <script type="text/javascript">
     $(document).ready(function(){
@@ -96,7 +62,42 @@ $(document).ready(function(){
          });
     });
 </script>
-
+   
+    <!-- Fade out bubbles when clicked -->
+<script type"text/javascript">
+$(document).ready(function(){
+  $("#b1").click(function(){
+    $("#b1").fadeOut(5000);
+  });
+  $("#b2").click(function(){
+    $("#b2").fadeOut(5000);
+  });
+  $("#b3").click(function(){
+    $("#b3").fadeOut(5000);
+  });
+  $("#b4").click(function(){
+    $("#b4").fadeOut(5000);
+  });
+  $("#b5").click(function(){
+    $("#b5").fadeOut(5000);
+  });
+  $("#b6").click(function(){
+    $("#b6").fadeOut(5000);
+  });
+  $("#b7").click(function(){
+    $("#b7").fadeOut(5000);
+  });
+  $("#b8").click(function(){
+    $("#b8").fadeOut(5000);
+  });
+  $("#b9").click(function(){
+    $("#b9").fadeOut(5000);
+  });
+  $("#b10").click(function(){
+    $("#b10").fadeOut(5000);
+  });
+});
+</script>
 </body>
 </html>
 
