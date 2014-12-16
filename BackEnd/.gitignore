@@ -4,3 +4,8 @@
 .rebar/
 deps/
 ebin/
+
+##Config Files##
+################
+hashbubble.config
+rebar.config
