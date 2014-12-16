@@ -32,7 +32,7 @@
 
 <body>
 
-<!-- Passes $url from riakQuery and Displays url as image -->
+    <!-- Passes $url from riakQuery and Displays url as image -->
 <script type="text/javascript">
   var bubbleUrl = <?php echo json_encode($url); ?>;
 
@@ -49,17 +49,39 @@
     }
 </script>  
 
-<script>
+    <!-- Fade out bubbles when clicked -->
+<script type"text/javascript">
 $(document).ready(function(){
-  $("button").click(function(){
-    $("#bub1").fadeOut(5000);
-    $("#bub2").fadeOut(5000);
-    $("#bub3").fadeOut(5000);
+  $("#b1").click(function(){
+    $("#b1").fadeOut(5000);
+  });
+});
+$(document).ready(function(){
+  $("#b2").click(function(){
+    $("#b2").fadeOut(5000);
+
+  });
+});
+$(document).ready(function(){
+  $("#b3").click(function(){
+    $("#b3").fadeOut(5000);
+
+  });
+});
+$(document).ready(function(){
+  $("#b4").click(function(){
+    $("#b4").fadeOut(5000);
+
+  });
+});
+$(document).ready(function(){
+  $("#b5").click(function(){
+    $("#b5").fadeOut(5000);
+
   });
 });
 </script>
 
-<!-- <div id="div3" style="width:80px;height:80px;background-color:blue;"></div> -->
 
     <!-- Randomize Bubble Location on Screen -->
 <script type="text/javascript">
@@ -68,8 +90,8 @@ $(document).ready(function(){
         var ww = $(window).width();
         var wh = $(window).height();
         $(".bubble").each(function(i){
-            var posx = Math.round(Math.random() * ww);
-            var posy = Math.round(Math.random() * wh);
+            var posx = Math.round(Math.random() * ww -20);
+            var posy = Math.round(Math.random() * wh +80);
         $(this).css("top", posy + "px").css("left", posx + "px").css
          });
     });
@@ -77,6 +99,14 @@ $(document).ready(function(){
 
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
