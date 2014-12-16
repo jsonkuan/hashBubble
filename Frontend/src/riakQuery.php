@@ -12,7 +12,7 @@ require_once '../riak-php-client/src/Basho/Riak/Utils.php';
 $client = new Basho\Riak\Riak('127.0.0.1',10018);
 
 # Choose bucket
-$imageBucket = $client->bucket("image_data");
+$imageBucket = $client->bucket("twitter_data");
 
 # Search for exact match from secondary index 
 if(isset($_POST['search'])) {
@@ -24,7 +24,6 @@ if(isset($_POST['search'])) {
 		$url = $link->getKey();
 		$bubble = "<button onclick='showContent(this.name);' name='$url' class='bubble'></button>";
 		echo $bubble;
-		// echo '<pre>'; print_r($bubble); echo '</pre>';
 	}
 }
 
