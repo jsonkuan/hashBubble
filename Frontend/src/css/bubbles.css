@@ -1,14 +1,14 @@
    .bubble {
     position: absolute;
-    display:block;
-    width:100px;
-    height:100px;
+    display:circle;
+    width:190px;
+    height:190px;
     line-height:50px;
     border: 2px solid #f5f5f5;
     border-radius: 50%;
-    background: #FFCCFF;
-    box-shadow: 0 0 3px #CC00FF;
-    font-size:5px;
+    background: #33CCFF;
+    box-shadow: 0 0 3px #3300FF;
+    outline: none;
    } 
 
 
