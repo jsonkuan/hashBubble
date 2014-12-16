@@ -1,0 +1,6 @@
+
+## Dependencies ##
+#################
+.rebar/
+deps/
+ebin/
