@@ -12,9 +12,11 @@ start() ->
 
 %%every day at this time, using map reduce to get 20 most popular hashtags, 
 %%sleeps, starts local time again
-start({_Date, {11,54,30}}) ->
-	hb_server:get_top_20(),
-	timer:sleep(3*60*1000),
+start({_Date, {9,25,30}}) ->
+	hb_server:get_top_20_twitter(),
+	timer:sleep(1*60*1000),
+	hb_server:get_top_20_instagram(),
+	timer:sleep(1000),
 	start(erlang:localtime());
 
 %%every new minute, get tweets then sleep for a second, start over

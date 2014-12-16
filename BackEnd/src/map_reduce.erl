@@ -1,13 +1,13 @@
 -module(map_reduce).
--export([mapHash/3, reduceHash/2, mapred/2, get_link/0,
+-export([mapHash/3, reduceHash/2, mapred/3, get_link/0,
 		close_link/1, get_bucket_keys/1, start_date/0,
-		end_date/0, format_date/1, reverse/2, start/0]).
+		end_date/0, format_date/1, reverse/2, start/1]).
 
 
-start() ->
+start(Bucket) ->
 	Pid = get_link(),
-	BucketKey = get_bucket_keys(<<"image_data">>),
-	mapred(BucketKey,Pid).
+	BucketKey = get_bucket_keys(Bucket),
+	mapred(Bucket, BucketKey, Pid).
 
 % it connect to Riak and return a pid
 get_link() ->
@@ -20,7 +20,7 @@ close_link(Pid) -> riakc_pb_socket:stop(Pid).
 
 %map-reduce function call function mapHash/3 (map function) and function reduceHash/2 (reduce function)
 % it return list of hashtags and number of hashtags in lists format.
-mapred(Keys,Pid) ->
+mapred(Bucket, Keys,Pid) ->
 %	Pid = get_link(),
 	{ok, [{1, [Result]}]} = riakc_pb_socket:mapred(
 		Pid,
@@ -33,7 +33,7 @@ mapred(Keys,Pid) ->
 	A = dict:to_list(Result),
 	B = lists:keysort(2,A),
 	Top_hash = topHashtag(20,reverse(B,[]), []),
-	storing:store_map(Top_hash).
+	storing:store_map(Bucket, Top_hash).
 	% io:format("~p~n",[X]),
 
 topHashtag(0, _List, TopHash) -> TopHash;

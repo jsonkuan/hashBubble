@@ -1,5 +1,5 @@
 -module(storing).
-- export([store/2,store_map/1, to_binary/2]).
+- export([store/2,store_map/2, to_binary/2]).
 
 -record(hostport, {host, port}).
 
@@ -39,9 +39,11 @@ Obj2 = riakc_obj:update_metadata(Obj, MD2),
     io:format("~p~n", [Object]), io:format("~p~n", [Time]), 
     riakc_pb_socket:stop(R).
 
+store_map(<<"instagram_data">>, Map_Result) -> store_top_20(<<"top_20_instagram">>, Map_Result);
+store_map(<<"twitter_data">>, Map_Result) -> store_top_20(<<"top_20_twitter">>, Map_Result).
 
     
-store_map(Map_Result)  ->
+store_top_20(Bucket, Map_Result)  ->
 
 % RHP = get_riak_hostport(riak1),
  {ok, R} = riakc_pb_socket:start_link("127.0.0.1", 10017), %riakc_pb_socket:start(RHP#hostport.host, RHP#hostport.port),
@@ -51,7 +53,7 @@ Time = list_to_binary(map_reduce:format_date(T)),
 case Map_Result of
   Map_Result ->
         
-        Obj = riakc_obj:new(<<"top_hashtags">>,
+        Obj = riakc_obj:new(Bucket,
                     Time,
                    erlang:list_to_binary(to_binary(Map_Result,[])),
                     <<"text/plain">>
