@@ -73,7 +73,7 @@ This is a second year project for the course DIT029 - Project: Software Architec
     2> hb_supervisor:start().
     ```
 
-    If you get no errors, your tweets should be saved in the `<"image_data">` bucket in your Riak database.
+    If you get no errors, your tweets should be saved in the `<"twitter_data">` bucket and instagram in the `<"instagram_data">` bucket in your Riak database.
 ### Frontend guide
 
 1.  The contents of the frontend folder should be moved to the appropriate location, e.g. /var/www/html/. 
