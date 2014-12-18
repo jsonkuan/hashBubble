@@ -91,7 +91,7 @@ format_date({{Year,Month,Date},{Hour,Minute,Second}}) ->
 start_date() -> 
 
 	{Date,_ }  = end_date(),
-	EndDate_2 = {Date,{23,59,59}},
+	EndDate_2 = {Date,{0,0,0}},
 	StartDate = calendar:gregorian_seconds_to_datetime(calendar:datetime_to_gregorian_seconds(EndDate_2)- 24*60*60),
 	{StartDate, EndDate_2}.
 
