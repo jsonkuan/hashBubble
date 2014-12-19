@@ -38,7 +38,7 @@
 
     function showContent(bubbleUrl, getElementById) {
         var src = bubbleUrl;
-        show_image(bubbleUrl, 60,60, getElementById);
+        show_image(bubbleUrl, 210,210, getElementById);
         
     }
     function show_image(src, width, height, id) {
