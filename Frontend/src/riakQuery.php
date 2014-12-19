@@ -18,14 +18,17 @@ $imageBucket = $client->bucket("twitter_data");
 if(isset($_POST['search'])) {
 	$searchQuery = $_POST['search'];
 
-	$i = 0;
+	$id = 0;
     // Loop to create bubbles for each url found in riak
 	$results = $imageBucket->indexSearch("hashtags", 'bin', $searchQuery);
 	foreach ($results as $link) {
 		$url = $link->getKey();
-		$i = $i + 1;
-		$bubble = "<button onclick='showContent(this.name, this.id);' name='$url' class='bubble' id='b" .$i. "'></button>";
+		$id = $id + 1;
+		$bubble = "<button onclick='showContent(this.name, this.id);' name='$url' class='bubble' id='b" .$id. "'></button>";
 		echo $bubble;
+		//Set limit to 10 bubbles
+		if ($id == 11) 
+			break;
 	}
 }
 
