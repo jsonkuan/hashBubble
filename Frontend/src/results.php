@@ -35,7 +35,7 @@
 
     function showContent(bubbleUrl, getElementById) {
         var src = bubbleUrl;
-        show_image(bubbleUrl, 210,210, getElementById);
+        show_image(bubbleUrl, 1,1, getElementById);
         
     }
     function show_image(src, width, height, id) {
@@ -54,7 +54,7 @@
         var wh = $(window).height();
         $(".bubble").each(function(i){
             var posx = Math.round(Math.random() * ww);
-            var posy = Math.round(Math.random() * wh +80);
+            var posy = Math.round(Math.random() * wh);
         $(this).css("top", posy + "px").css("left", posx + "px").css
          });
     });
@@ -71,6 +71,9 @@ $(document).ready(function(){
   });
 });
 </script>
+
+
+
 
 </body>
 </html>
