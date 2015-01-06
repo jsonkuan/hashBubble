@@ -13,14 +13,11 @@
  
  	<!-- Home Button, redirects to main.php -->
     <div class="header">
-	  <style>
-	   html.no-svg .svg-image { display: none }
-	  </style>
 	  <a href="./main.php">
 	    <img class="svg-image" src="home.svg" height="55" width="55">
 	  </a>
  	</div>
-    
+
     <!-- Search bar -->
     <div id="searchtext_2">							
       <form class="form-wrapper" name="searchform" action="" method='post' id="searchtext_2">

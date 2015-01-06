@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/styles.css"> 
 </head>
-
 <body> 
  <!-- Search bar -->
     <form class="form-wrapper cf" name="searchform" id="searchtext" action="results.php" method='post'>
