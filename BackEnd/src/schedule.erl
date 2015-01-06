@@ -12,7 +12,7 @@ start() ->
 
 %%every day at this time, using map reduce to get 20 most popular hashtags, 
 %%sleeps, starts local time again
-start({_Date, {3,03,03}) ->
+start({_Date, {3,03,03}}) ->
 	hb_server:get_top_20_twitter(),
 	timer:sleep(1*60*1000),
 	hb_server:get_top_20_instagram(),
