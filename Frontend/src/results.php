@@ -14,7 +14,7 @@
  	<!-- Home Button, redirects to main.php -->
     <div class="header">
 	  <a href="./main.php">
-	    <img class="svg-image" src="home.svg" height="55" width="55">
+	    <img class="svg-image" src="home.svg" height="75" width="75">
 	  </a>
  	</div>
 
