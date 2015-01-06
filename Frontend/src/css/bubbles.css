@@ -14,9 +14,11 @@
 }
 
 .bubble img {
-    border-radius: 40%;
-    background-position: center;
-    background-attachment: fixed;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center; 
 }
 
 .bubble:hover {
