@@ -4,7 +4,7 @@
 <head>
 <style>
 html { 
-  background: url(back.jpg) no-repeat center center fixed; 
+  background: url(images/back.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
