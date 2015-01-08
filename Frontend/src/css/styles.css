@@ -9,7 +9,7 @@
 .header {
     text-align: right;
     padding: 5px 0px 5px 0px;
-    color: white;
+    background color: white;
 }
 .nav {
     text-align: left;
@@ -43,9 +43,9 @@
     font-size: 25px;
     text-align: center;
 	height:450px;
-    margin: 40px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
     padding: 20px 20px 0px 20px;
-	color: #E800A3;
+	color: white;
 } 
 
 .footer {
@@ -88,7 +88,6 @@
 
 /*-------------------------------------*/
 
-    
     .form-wrapper {
     position: relative;
     width: 450px;

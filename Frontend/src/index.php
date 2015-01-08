@@ -8,7 +8,7 @@
  <link rel="stylesheet" type="text/css" href="css/styles.css">
  <style>
 html { 
-  background: url(bubble.jpg) no-repeat center center fixed; 
+  background: url(images/bubble.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

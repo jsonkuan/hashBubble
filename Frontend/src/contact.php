@@ -6,7 +6,7 @@
 <head>
 <style>
 html { 
-  background: url(bubble2.jpg) no-repeat center center fixed; 
+  background: url(images/bubble2.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
