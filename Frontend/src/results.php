@@ -1,6 +1,5 @@
+<!DOCTYPE html>
 <?php include('riakQuery.php');?>
-
-<!DOCTYPE html> 
 <html lang ="en">
 <head>
 <style>
@@ -29,7 +28,7 @@ html {
     <!-- Search bar -->
     <div id="searchtext_2">							
       <form class="form-wrapper" name="searchform" action="" method='post' id="searchtext_2">
-        <input type="text" name="search" placeholder="Enter a #hashtag">
+        <input id='textfield' type="text" name="search" placeholder="Enter a #hashtag">
         <button type="submit" value="Search">Find#</button >
       </form>
     </div>
@@ -60,8 +59,8 @@ html {
 <script type="text/javascript">
     $(document).ready(function(){
         // Get Window Dimentions
-        var ww = $(window).width();
-        var wh = $(window).height();
+        var ww = $(window).width() -200;
+        var wh = $(window).height() -200;
         $(".bubble").each(function(i){
             var posx = Math.round(Math.random() * ww);
             var posy = Math.round(Math.random() * wh);
