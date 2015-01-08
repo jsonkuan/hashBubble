@@ -3,40 +3,73 @@
 // our css doc
 
 .body {
+    font-family: Helvetica, sans-serif;
+    padding: 5px 5px 0px 5px;
 }
 .header {
-	text-align: right;
-	height: 55px;
-	padding-top: 5px;
-  	padding-bottom: 5px; 
+    text-align: right;
+    padding: 5px 0px 5px 0px;
+    color: white;
+}
+.nav {
+    text-align: left;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px; 
+    border-top: 2px solid #DFDFDF;
+    border-bottom: 2px solid #DFDFDF;
+}
+.nav ul{
+    margin: 0px 0px 0px 20px;
+    padding: 0px 0px 0px 0px;
+}
+.nav ul li{
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+   
+    list-style: none;
+    display: inline-block;
+}
+.nav ul li a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 5px 15px;
+}
+.nav ul li a:hover{
+    background-color: #FFD1F0;
 }
 
-
 .content {
-	height:505px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-    border-radius: 20px;
-   
+    font-size: 25px;
+    text-align: center;
+	height:450px;
+    margin: 40px 0px 0px 0px;
+    padding: 20px 20px 0px 20px;
+	color: #E800A3;
 } 
 
 .footer {
-	text-align: left;
-	padding-top: 5px;
-  	padding-bottom: 5px; 
-
+    text-align:right;
+    height: 50px;
+    margin: 0px 0px 0px 0px;
+    padding: 10px 10px 10px 10px;
+    color:  white;
 }
+
 
 #searchtext {
     position: fixed;
-    top: 25%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     
     }
 
  #searchtext_2 {
-    margin-top: -55px;
+    position: fixed;
+    top: 6%;
+    left: 20%;
+    transform: translate(-50%, -50%);
     }
 
  /*-------------------------------------*/
@@ -66,18 +99,18 @@
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.8);
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
-    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.8);
 }   
     
     .form-wrapper input {
-    width: 330px;
-    height: 20px;
-    padding: 10px 5px;
+    width: 320px;
+    height: 30px;
+    padding: 5px 5px;
     float: left;    
-    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
-    border: 0;
+    font: bold 20px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    border: 0px;
     background: #eee;
     -moz-border-radius: 3px 0 0 3px;
     -webkit-border-radius: 3px 0 0 3px;
@@ -118,8 +151,8 @@
         padding: 0;
         cursor: pointer;
         height: 40px;
-        width: 110px;
-        font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        width: 120px;
+        font: bold 15px/20px 'lucida sans', 'trebuchet MS', 'Tahoma';
         color: #fff;
         text-transform: uppercase;
         background: #d83c3c;

@@ -17,6 +17,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    outline: none;
     background-repeat: no-repeat;
     background-position: center; 
 }

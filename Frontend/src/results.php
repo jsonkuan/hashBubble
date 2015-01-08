@@ -3,6 +3,16 @@
 <!DOCTYPE html> 
 <html lang ="en">
 <head>
+<style>
+html { 
+  background: url(back.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
+    <body>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bubbles.css"> 
     <link rel="stylesheet" href="css/styles.css"> 
@@ -13,10 +23,8 @@
  
  	<!-- Home Button, redirects to main.php -->
     <div class="header">
-	  <a href="./main.php">
-	    <img class="svg-image" src="home.svg" height="75" width="75">
-	  </a>
- 	</div>
+    <?php include('template/header.php'); ?>
+ 	  </div>
 
     <!-- Search bar -->
     <div id="searchtext_2">							
@@ -25,11 +33,13 @@
         <button type="submit" value="Search">Find#</button >
       </form>
     </div>
+
 </head>
 
 <body>
 
-    <!-- Passes $url from riakQuery and Displays url as image -->
+
+<!-- Passes $url from riakQuery and Displays url as image -->
 <script type="text/javascript">
   var bubbleUrl = <?php echo json_encode($url); ?>;
 
@@ -71,9 +81,6 @@ $(document).ready(function(){
   });
 });
 </script>
-
-
-
 
 </body>
 </html>
