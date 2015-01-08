@@ -1,6 +1,6 @@
 #pimmie{
-    left: 20px;
-    top:  150px;
+    left: 400px;
+    top:  250px;
 }
 #regine{
     right: 20px;
@@ -11,28 +11,28 @@
     top: 400px;
 }
 #michael{
-    left: 300px;
-    bottom: 250px;
+    left: 600px;
+    bottom: 200px;
 }
 #jason{
     bottom: 300px;
     right: 300px; 
 }
 #em{
-    left:80px;
-    bottom: 150px;
+    left:380px;
+    bottom: 50px;
 }
 #john{
     right: 280px;
     top: 500px;
 }
 #pontus{
-    right: 300px;
-    bottom: 340px;
+    right: 500px;
+    bottom: 130px;
 }
 #andreas{
-    right: 150px;
-    bottom: 150px;
+    right: 180px;
+    bottom: 180px;
 }
 
 .bubble {
